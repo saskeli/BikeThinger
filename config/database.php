@@ -10,7 +10,6 @@
 
     // Huomioi että MySQL:n käyttäjätunnus ja salasana ovat tietoa joka olisi syytä pitää
     // salassa, eli älä talleta tätä Githubiin.
-    private static $con_settings = parse_url(getenv('DATABASE_URL'))
 
     private static $connection_config = array(
       'psql' => array(
