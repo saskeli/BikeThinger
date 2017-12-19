@@ -9,7 +9,6 @@
 
       try {
         $dbconf = parse_url(getenv('DATABASE_URL'));
-        var_dump($dbconf);
         $connection = new PDO($dbconf['scheme'] . ':' . $dbconf['host'] . $dbconf['path'], 
           $dbconf['user'], $dbconf['pass']);
         $connection->exec('SET NAMES UTF8');
