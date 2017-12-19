@@ -9,9 +9,9 @@
   $explode =  explode('/', $script_name);
 
   if($explode[1] == 'index.php'){
-    $base_folder = '';
+    $base_folder = 'https://bikethinger.herokuapp.com/';
   }else{
-    $base_folder = $explode[1];
+    $base_folder = 'https://bikethinger.herokuapp.com/';
   }
 
   // Määritetään sovelluksen juuripolulle vakio BASE_PATH
