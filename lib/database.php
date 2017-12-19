@@ -9,7 +9,7 @@
 
       try {
         $dbconf = parse_url(getenv('DATABASE_URL'));
-        $connection = new PDO($dbconf['scheme'] . ':' . $dbconf['host'] . $dbconf['path'], 
+        $connection = new PDO('pgsql:' . $dbconf['host'] . $dbconf['path'], 
           $dbconf['user'], $dbconf['pass']);
         $connection->exec('SET NAMES UTF8');
         // Näytetään virheilmoitukset
