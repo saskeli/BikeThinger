@@ -8,8 +8,8 @@
       $connection_config = DatabaseConfig::connection_config();
 
       try {
-        $dbconf = parse_url(getenv('DATABASE_URL'))
-        var_dump($dbconf)
+        $dbconf = parse_url(getenv('DATABASE_URL'));
+        var_dump($dbconf);
         $connection = new PDO($dbconf['host'], $dbconf['user'], $dbconf['pass']);
         $connection->exec('SET NAMES UTF8');
         // Näytetään virheilmoitukset
