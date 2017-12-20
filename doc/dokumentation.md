@@ -63,10 +63,11 @@ These are equivalent to adding bikes.
 * Browse to the Components section.
 * Select a new status from a pull-down (e.g. bike1, bike2, retired...) for the component.
 
+Note that assignment to bikes is obviously only available if there are bikes. Else the only available statuses would be retired or available.
+
 ### As a User I want to add an activity to a Bike
 
 * If not signed in, I sign in using a *user name* and *password* pair.
 * Browse to the Bikes sections.
 * Enter magnitude of activity (e.g. 50 km) and select add.
 * Activity automatically gets added to bike, gear currently in use and components assigned to the bike.
-
