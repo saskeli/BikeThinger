@@ -1,10 +1,10 @@
-# Tietokantasovelluksen esittelysivu
+# BikeThinger
 
-Yleisiä linkkejä:
+## Links
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [BikeThinger on heroku](https://bikethinger.herokuapp.com)
+* [Documentation](/doc/documentation.md)
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Simple cycling gear and component manager inspired by Strava's "My Gear" section.
