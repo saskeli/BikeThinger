@@ -3,7 +3,7 @@
 ## Links
 
 * [BikeThinger on heroku](https://bikethinger.herokuapp.com)
-* [Documentation](/doc/documentation.md)
+* [Documentation](/doc/documentation.md) - [pdf](/doc/documentation.pdf)
 
 ## Työn aihe
 
