@@ -9,7 +9,8 @@
 
       try {
         $dbconf = parse_url(getenv('DATABASE_URL'));
-        $connection = new PDO('pgsql:host=' . $dbconf['host'] . ';dbname=' . getenv('DATABASE_URL') . ';port=' . $dbconf['port'] . ';user=' $dbconf['user'] . ';password=' . $dbconf['pass']);
+        $connection = new PDO('pgsql:host=' . $dbconf['host'] . ';dbname=' . substr($dbconf['path'], 1) . 
+          ';port=' . $dbconf['port'] . ';user=' $dbconf['user'] . ';password=' . $dbconf['pass']);
         $connection->exec('SET NAMES UTF8');
         // Näytetään virheilmoitukset
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
