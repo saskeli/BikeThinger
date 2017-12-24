@@ -4,6 +4,6 @@
     HelloWorldController::index();
   });
 
-  $routes->get('/hiekkalaatikko', function() {
+  $routes->get('/sandbox', function() {
     HelloWorldController::sandbox();
   });
