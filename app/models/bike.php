@@ -25,7 +25,8 @@ class Bike extends BaseModel {
         		'retired' => $row['retired'],
         		'description' => $row['description']
       		));
-	    return $games;
+		}
+		return $games;
 	}
 
 	public static function find($id) {
