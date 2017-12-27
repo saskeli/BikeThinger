@@ -20,10 +20,11 @@
       <td>{{bike.distance}}</td>
       <td>
         (% if bike link %}
-          <a  href="{{bike.link}}">{{bike.model}}</a></td>
+          <a  href="{{bike.link}}">{{bike.model}}</a>
         {% else %}
           {{bike.model}}
         {% endif %}
+      </td>
       <td>{{bike.year}}</td>
       <td>
         <div class="dropdown">
