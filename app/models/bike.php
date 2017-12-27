@@ -13,7 +13,7 @@ class Bike extends BaseModel {
 		$rows = $query->fetchAll();
     	$games = array();
     	foreach($rows as $row){
-      		$games[] = new Game(array(
+      		$games[] = new Bike(array(
         		'id' => $row['id'],
         		'user_id' => $row['user_id'],
         		'distance' => $row['distance'],
