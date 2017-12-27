@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Your gear</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Kilometers</th>
+      <th>Manufacturer / Model</th>
+      <th>Year</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mavic tubeless</td>
+      <td>0</td>
+      <td>Yksion Pro UST Tubeless ready 25-622</td>
+      <td>2017</td>
+      <td> 
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Not in use <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Spessu</a></li>
+            <li><a href="#">Nisiki</a></li>
+            <li><a href="#">Biakki</a></li>
+            <li><a href="#">Not in use</a></li>
+            <li><a href="#">Retired</a></li>
+          </ul>
+        </div>
+      </td>
+      <tr><a class="btn btn-default btn-sm" href="#">Edit</a></tr>
+    </tr>
+    <tr>
+      <td>Suomi 40</td>
+      <td>70</td>
+      <td><a href=http://www.suomityres.com/renkaat/?code=T201281&type=winter#specs_winter>Suomi Tyres W240 A 40-622</a></td>
+      <td>2017</td>
+      <td> 
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Nisiki<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Spessu</a></li>
+            <li><a href="#">Nisiki</a></li>
+            <li><a href="#">Biakki</a></li>
+            <li><a href="#">Not in use</a></li>
+            <li><a href="#">Retired</a></li>
+          </ul>
+        </div>
+      </td>
+      <tr><a class="btn btn-default btn-sm" href="#">Edit</a></tr>
+    </tr>
+    <tr>
+      <td>Schwalbe winter 30</td>
+      <td>46</td>
+      <td><a href=https://www.schwalbe.com/en/spike-reader/winter.html>Schwalbe Active Winter 30-622</a></td>
+      <td>2017</td>
+      <td> 
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Spessu<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Spessu</a></li>
+            <li><a href="#">Nisiki</a></li>
+            <li><a href="#">Biakki</a></li>
+            <li><a href="#">Not in use</a></li>
+            <li><a href="#">Retired</a></li>
+          </ul>
+        </div>
+      </td>
+      <tr><a class="btn btn-default btn-sm" href="#">Edit</a></tr>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>
+  <a href="#" class="btn btn-success">Add component</a>
+</p>
+
+{% endblock %}
