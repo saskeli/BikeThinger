@@ -8,7 +8,7 @@ $routes->get('/bikes', function() {
   BikeController::index();
 });
 
-$routes->get('/bikes/:id', function($id) {
+$routes->get('/bike/:id', function($id) {
 	BikeController::show($id);
 });
 
