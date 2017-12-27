@@ -1,6 +1,6 @@
 <?php
 
-class Bike extends BaseMoodel {
+class Bike extends BaseModel {
 	public $id, $user_id, $distance, $name, $model, $link, $year, $in_use, $retired, $description;
 
 	public function __construct($attributes) {
