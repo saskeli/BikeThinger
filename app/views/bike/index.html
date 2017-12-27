@@ -23,11 +23,11 @@
       <td>
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-            {{% if bike.in_use %}}
+            {% if bike.in_use %}
               In use
-            {{% else %}}
+            {% else %}
               Retired
-            {{% endif %}}
+            {% endif %}
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
