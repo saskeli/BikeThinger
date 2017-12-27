@@ -23,3 +23,11 @@ $routes->get('/components', function() {
 $routes-> get('/login', function() {
   HelloWorldController::Login();
 });
+
+$routes-> get('/edit', function() {
+  HelloWorldController::Edit();
+});
+
+$routes-> get('/details', function() {
+  HelloWorldController::Details();
+});
