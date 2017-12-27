@@ -5,7 +5,7 @@
 * [BikeThinger on heroku](https://bikethinger.herokuapp.com)
 * [Documentation](/doc/documentation.md) - [pdf](/doc/documentation.pdf)
 * Static pages for layout testing:
-  * [Bikes](https://bikethinger.herokuapp.com/bikes)
+  * [Bikes](https://bikethinger.herokuapp.com/bikes) (also main page when logged in)
   * [Gear](https://bikethinger.herokuapp.com/gear)
   * [Components](https://bikethinger.herokuapp.com/components)
   * [Login](https://bikethinger.herokuapp.com/login)
