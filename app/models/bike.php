@@ -34,7 +34,18 @@ class Bike extends BaseModel {
 		$query->execute(array('id' => $id));
 		$row = $query->fetch();
 		if ($row) {
-			$bike = new Bike(array($row));
+			$bike = new Bike(array(
+				'id' => $row['id'],
+        		'user_id' => $row['user_id'],
+        		'distance' => $row['distance'],
+        		'name' => $row['name'],
+        		'model' => $row['model'],
+        		'link' => $row['link'],
+        		'year' => $row['year'],
+        		'in_use' => $row['in_use'],
+        		'retired' => $row['retired'],
+        		'description' => $row['description']
+			));
 			return $bike;
 		}
 		return null;
