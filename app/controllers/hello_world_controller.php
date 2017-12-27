@@ -7,7 +7,8 @@ class HelloWorldController extends BaseController{
   }
   public static function sandbox(){
     // Testaa koodiasi täällä
-    View::make('helloworld.html');
+    $bikes = Bike::all();
+    Kint::dump($bikes);
   }
   public static function Bikes(){
     View::make('plans/bikes.html');
