@@ -1,7 +1,5 @@
 <?php
 
-require 'app/models/bike.php';
-
 class HelloWorldController extends BaseController{
   public static function index(){
     // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
