@@ -25,7 +25,17 @@ class Bike extends BaseModel {
         		'retired' => $row['retired'],
         		'description' => $row['description']
       		));
-    	}
 	    return $games;
+	}
+
+	public static function find($id) {
+		$query = DB::connection()->prepare('SELECT * FROM bike WHERE id = :id LIMIT 1');
+		$query->execute(array('id' => , $id));
+		$row = $query->fetch();
+		if ($row) {
+			$bike = new Bike(array($row));
+			return $bike;
+		}
+		return null;
 	}
 }

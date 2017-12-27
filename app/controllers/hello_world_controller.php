@@ -10,7 +10,9 @@ class HelloWorldController extends BaseController{
   public static function sandbox(){
     // Testaa koodiasi täällä
     $bikes = Bike::all();
+    $bike = Bike::find(1);
     Kint::dump($bikes);
+    Kint::dump($bike);
   }
   public static function Bikes(){
     View::make('plans/bikes.html');
