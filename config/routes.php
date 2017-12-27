@@ -9,7 +9,7 @@ $routes->get('/sandbox', function() {
 });
 
 $routes->get('/bikes', function() {
-  HelloWorldController::Bikes();
+  BikeController::index();
 });
 
 $routes->get('/gear', function() {

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Your bikes</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Bike</th>
+      <th>Kilometers</th>
+      <th>Manufacturer / Model</th>
+      <th>Year</th>
+      <th>Status</th>
+      <th>Add kilometers</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for bike in bikes %}
+    <tr>
+      <td><a href="{{base_path}}/bike/{{bike.id}}">{{bike.name}}</a></td>
+      <td>{{bike.distance}}</td>
+      <td><a href="{{bike.link}}">{{bike.model}}</a></td>
+      <td>{{bike.year}}</td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            {{% if bike.in_use %}}
+              In use
+            {{% else %}}
+              Retired
+            {{% endif %}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">In use</a></li>
+            <li><a href="#">Retired</a></li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <form class="form-inline">
+          <input class="form-control" type="number" /> <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<p>
+  <a href="#" class="btn btn-success">Add bike</a>
+</p>
+
+{% endblock %}
