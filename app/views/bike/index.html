@@ -19,7 +19,7 @@
       <td><a href="{{base_path}}bike/{{bike.id}}">{{bike.name}}</a></td>
       <td>{{bike.distance}}</td>
       <td>
-        (% if bike link %}
+        (% if bike.link %}
           <a  href="{{bike.link}}">{{bike.model}}</a>
         {% else %}
           {{bike.model}}
