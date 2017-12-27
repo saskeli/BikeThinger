@@ -16,9 +16,14 @@
   <tbody>
     {% for bike in bikes %}
     <tr>
-      <td><a href="{{base_path}}/bike/{{bike.id}}">{{bike.name}}</a></td>
+      <td><a href="{{base_path}}bike/{{bike.id}}">{{bike.name}}</a></td>
       <td>{{bike.distance}}</td>
-      <td><a href="{{bike.link}}">{{bike.model}}</a></td>
+      <td>
+        (% if bike link %}
+          <a  href="{{bike.link}}">{{bike.model}}</a></td>
+        {% else %}
+          {{bike.model}}
+        {% endif %}
       <td>{{bike.year}}</td>
       <td>
         <div class="dropdown">
