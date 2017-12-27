@@ -1,15 +1,19 @@
 <?php
 
 $routes->get('/', function() {
-  HelloWorldController::index();
-});
-
-$routes->get('/sandbox', function() {
-  HelloWorldController::sandbox();
+  BikeController::index();
 });
 
 $routes->get('/bikes', function() {
   BikeController::index();
+});
+
+$routes->get('/bikes/:id', function(id) {
+	BikeController::show($id);
+});
+
+$routes->get('/sandbox', function() {
+  HelloWorldController::sandbox();
 });
 
 $routes->get('/gear', function() {
