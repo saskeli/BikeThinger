@@ -31,7 +31,7 @@ class Bike extends BaseModel {
 
 	public static function find($id) {
 		$query = DB::connection()->prepare('SELECT * FROM bike WHERE id = :id LIMIT 1');
-		$query->execute(array('id' => , $id));
+		$query->execute(array('id' => $id));
 		$row = $query->fetch();
 		if ($row) {
 			$bike = new Bike(array($row));
