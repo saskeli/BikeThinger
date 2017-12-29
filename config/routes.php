@@ -21,7 +21,7 @@ $routes->get('/gear/:id', function($id) {
 });
 
 $routes->get('/components', function() {
-  ComponentController::Components();
+  ComponentController::index();
 });
 
 $routes->get('/component/:id', function($id) {
