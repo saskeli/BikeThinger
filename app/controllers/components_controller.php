@@ -10,6 +10,11 @@ class ComponentController extends BaseController {
 
 	public static function show($id) {
 		$component = Component::find($id);
-		View::make('component/details.html', array('component' => $component));
+		$bike = null;
+		if ($component->in_use) {
+			$bike = Bike::find($component->bike_id);
+		}
+		View::make('component/details.html', array('component' => $component,
+												   'bike' => $bike));
 	}
 }

@@ -4,6 +4,13 @@
   <ul>
     <li><strong>Kilometers:</strong> {{component.distance}}</li>
     <li><strong>Manufacturer / Model:</strong> {{component.model}}</li>
+    <li><string>Bike:</string> 
+      {% if bike %}
+      <a href="{{bike.link}}">{{nike.name}}</a>
+      {% else %}
+      N/A
+      {% endif %}
+    </li>
     <li><strong>Link:</strong> {{component.link}}</li>
     <li><strong>Year:</strong> {{component.year}}</li>
   </ul>
