@@ -9,15 +9,15 @@ $routes->get('/bikes', function() {
 });
 
 $routes->get('/bike/:id', function($id) {
-	BikeController::show($id);
-});
-
-$routes->get('/sandbox', function() {
-  HelloWorldController::sandbox();
+  BikeController::show($id);
 });
 
 $routes->get('/gear', function() {
-  HelloWorldController::Gear();
+  GearController::index();
+});
+
+$routes->get('/gear/:id', function($id) {
+  GearController::show($id);
 });
 
 $routes->get('/components', function() {
@@ -34,4 +34,8 @@ $routes-> get('/edit', function() {
 
 $routes-> get('/details', function() {
   HelloWorldController::Details();
+});
+
+$routes->get('/sandbox', function() {
+  HelloWorldController::sandbox();
 });

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{gear.name}}</h1>
+  <ul>
+    <li><strong>Kilometers:</strong> {{gear.distance}}</li>
+    <li><strong>Manufacturer / Model:</strong> {{gear.model}}</li>
+    <li><strong>Link:</strong> {{gear.link}}</li>
+    <li><strong>Year:</strong> {{gear.year}}</li>
+  </ul>
+  <p>
+    {{gear.description}}
+  </p>
+  <p>
+    <a href="{{base_path}}gear/{{gear.id}}/edit" class="btn btn-default">Muokkaa</a>
+  </p>
+{% endblock %}
