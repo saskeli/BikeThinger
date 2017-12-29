@@ -29,10 +29,10 @@
       <td> 
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-            {% if g.retired %}
+            {% if component.retired %}
               Retired
-            {% elseif g.in_use %}
-              BLA
+            {% elseif component.in_use %}
+              {{bikes[component.id]}}
             {% else %}
               Not in use
             {% endif %}
