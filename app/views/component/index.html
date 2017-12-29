@@ -31,10 +31,10 @@
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
             {% if g.retired %}
               Retired
-            {% elseif not g.in_use %}
-              Not in use
-            {% else %}
+            {% elseif g.in_use %}
               {{bikes[component.id]}}
+            {% else %}
+              Not in use
             {% endif %}
             <span class="caret"></span>
           </button>
