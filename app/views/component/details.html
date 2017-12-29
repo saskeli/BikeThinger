@@ -4,9 +4,9 @@
   <ul>
     <li><strong>Kilometers:</strong> {{component.distance}}</li>
     <li><strong>Manufacturer / Model:</strong> {{component.model}}</li>
-    <li><string>Bike:</string> 
+    <li><strong>Bike:</strong> 
       {% if bike %}
-      <a href="{{bike.link}}">{{nike.name}}</a>
+      <a href="{{base_path}}bike/{{bike.id}}">{{bike.name}}</a>
       {% else %}
       N/A
       {% endif %}
