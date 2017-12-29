@@ -11,22 +11,11 @@ class Bike extends BaseModel {
 		$query = DB::connection()->prepare('SELECT * FROM bike');
 		$query->execute();
 		$rows = $query->fetchAll();
-    	$games = array();
+    	$bikes = array();
     	foreach($rows as $row){
-      		$games[] = new Bike(array(
-        		'id' => $row['id'],
-        		'user_id' => $row['user_id'],
-        		'distance' => $row['distance'],
-        		'name' => $row['name'],
-        		'model' => $row['model'],
-        		'link' => $row['link'],
-        		'year' => $row['year'],
-        		'in_use' => $row['in_use'],
-        		'retired' => $row['retired'],
-        		'description' => $row['description']
-      		));
+      		$bikes[] = new Bike(rowToArr($row));
 		}
-		return $games;
+		return $bikes;
 	}
 
 	public static function find($id) {
@@ -34,20 +23,35 @@ class Bike extends BaseModel {
 		$query->execute(array('id' => $id));
 		$row = $query->fetch();
 		if ($row) {
-			$bike = new Bike(array(
-				'id' => $row['id'],
-        		'user_id' => $row['user_id'],
-        		'distance' => $row['distance'],
-        		'name' => $row['name'],
-        		'model' => $row['model'],
-        		'link' => $row['link'],
-        		'year' => $row['year'],
-        		'in_use' => $row['in_use'],
-        		'retired' => $row['retired'],
-        		'description' => $row['description']
-			));
+			$bike = new Bike(rowToArr($row));
 			return $bike;
 		}
 		return null;
+	}
+
+	public static function allWithId() {
+		$query = DB::connection()->prepare('SELECT id, name FROM bike');
+		$query->execute();
+		$rows = $query->fetchAll();
+		$bikes = array();
+		foreach ($rows as $row) {
+			$bikes[$row['id']] = $row['name'];
+		}
+		return $bikes,
+	}
+
+	public static function rowToArr($row) {
+		return array(
+			'id' => $row['id'],
+        	'user_id' => $row['user_id'],
+        	'distance' => $row['distance'],
+        	'name' => $row['name'],
+        	'model' => $row['model'],
+        	'link' => $row['link'],
+        	'year' => $row['year'],
+        	'in_use' => $row['in_use'],
+        	'retired' => $row['retired'],
+        	'description' => $row['description']
+		);
 	}
 }

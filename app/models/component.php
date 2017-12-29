@@ -1,20 +1,21 @@
 <?php
 
-class Gear extends BaseModel {
-	public $id, $user_id, $distance, $name, $model, $link, $year, $in_use, $retired, $description;
+class Component extends BaseModel {
+	public $id, $user_id, $bike_id, $distance, $name, $model, $link, $year, $in_use, $retired, $description;
 	public function __construct($attributes) {
 		parent::__construct($attributes);
 	}
 
 	public static function all() {
-		$query = DB::connection()->prepare('SELECT * FROM gear');
+		$query = DB::connection()->prepare('SELECT * FROM component');
 		$query->execute();
 		$rows = $query->fetchAll();
-    	$gear = array();
+    	$component = array();
     	foreach($rows as $row){
-      		$gear[] = new Gear(array(
+      		$component[] = new Component(array(
         		'id' => $row['id'],
         		'user_id' => $row['user_id'],
+        		'bike_id' => $row['bike_id'],
         		'distance' => $row['distance'],
         		'name' => $row['name'],
         		'model' => $row['model'],
@@ -25,17 +26,18 @@ class Gear extends BaseModel {
         		'description' => $row['description']
       		));
 		}
-		return $gear;
+		return $component;
 	}
 
 	public static function find($id) {
-		$query = DB::connection()->prepare('SELECT * FROM gear WHERE id = :id LIMIT 1');
+		$query = DB::connection()->prepare('SELECT * FROM component WHERE id = :id LIMIT 1');
 		$query->execute(array('id' => $id));
 		$row = $query->fetch();
 		if ($row) {
-			$gear = new Gear(array(
+			$component = new Component(array(
 				'id' => $row['id'],
         		'user_id' => $row['user_id'],
+        		'bike_id' => $row['bike_id'],
         		'distance' => $row['distance'],
         		'name' => $row['name'],
         		'model' => $row['model'],
@@ -45,7 +47,7 @@ class Gear extends BaseModel {
         		'retired' => $row['retired'],
         		'description' => $row['description']
 			));
-			return $gear;
+			return $component;
 		}
 		return null;
 	}

@@ -21,7 +21,11 @@ $routes->get('/gear/:id', function($id) {
 });
 
 $routes->get('/components', function() {
-  HelloWorldController::Components();
+  ComponentController::Components();
+});
+
+$routes->get('/component/:id', function($id) {
+  ComponentController::show($id);
 });
 
 $routes-> get('/login', function() {

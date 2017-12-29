@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{component.name}}</h1>
+  <ul>
+    <li><strong>Kilometers:</strong> {{component.distance}}</li>
+    <li><strong>Manufacturer / Model:</strong> {{component.model}}</li>
+    <li><strong>Link:</strong> {{component.link}}</li>
+    <li><strong>Year:</strong> {{component.year}}</li>
+  </ul>
+  <p>
+    {{component.description}}
+  </p>
+  <p>
+    <a href="{{base_path}}component/{{component.id}}/edit" class="btn btn-default">Muokkaa</a>
+  </p>
+{% endblock %}

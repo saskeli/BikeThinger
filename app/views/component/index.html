@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Your components</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Kilometers</th>
+      <th>Manufacturer / Model</th>
+      <th>Year</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for component in components %}
+    <tr>
+      <td><a href="{{base_path}}component/{{component.id}}">{{component.name}}</a></td>
+      <td>{{component.distance}}</td>
+      <td>
+        {% if component.link %}
+        <a href="{{component.link}}">{{component.model}}</a>
+        {% else %}
+        {{component.model}}
+        {% endif %}
+      </td>
+      <td>{{component.year}}</td>
+      <td> 
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            {% if g.retired %}
+              Retired
+            {% elseif !g.in_use %}
+              Not in use
+            {% else %}
+              {{bikes[component.id]}}
+            {% endif %}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            {% for b in bikes %}
+            <li><a href="#">{{b}}</a></li>
+            {% endfor %}
+            <li><a href="#">Not in use</a></li>
+            <li><a href="#">Retired</a></li>
+          </ul>
+        </div>
+      </td>
+      <td><a class="btn btn-default btn-sm" href="#">Edit</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<p>
+  <a href="#" class="btn btn-success">Add component</a>
+</p>
+
+{% endblock %}
