@@ -37,7 +37,7 @@ class Bike extends BaseModel {
 		foreach ($rows as $row) {
 			$bikes[$row['id']] = $row['name'];
 		}
-		return $bikes,
+		return $bikes;
 	}
 
 	public static function rowToArr($row) {
