@@ -31,7 +31,7 @@
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
             {% if g.retired %}
               Retired
-            {% elseif !g.in_use %}
+            {% elseif not g.in_use %}
               Not in use
             {% else %}
               {{bikes[component.id]}}
