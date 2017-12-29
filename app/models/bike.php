@@ -13,7 +13,7 @@ class Bike extends BaseModel {
 		$rows = $query->fetchAll();
     	$bikes = array();
     	foreach($rows as $row){
-      		$bikes[] = new Bike(rowToArr($row));
+      		$bikes[] = new Bike(Bike::rowToArr($row));
 		}
 		return $bikes;
 	}
@@ -23,7 +23,7 @@ class Bike extends BaseModel {
 		$query->execute(array('id' => $id));
 		$row = $query->fetch();
 		if ($row) {
-			$bike = new Bike(rowToArr($row));
+			$bike = new Bike(Bike::rowToArr($row));
 			return $bike;
 		}
 		return null;
