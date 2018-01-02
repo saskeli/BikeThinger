@@ -2,7 +2,7 @@
 {% block content %}
   <h1>Editing {{bike.name}}</h1>
 
-  <form method="post" action="{{base_path}}/bike/:id">
+  <form method="post" action="{{base_path}}bike/:id">
     <div class="form-group">
       <label>Bike</label>
       <input name="name" value="{{bike.name}}" class="form-control" type="text" />
@@ -25,8 +25,7 @@
     </div>
     <div class="form-group">
       <label>Description</label>
-      <textarea name="description" class="form-control">{{bike.description}}
-      </textarea>
+      <textarea name="description" class="form-control">{{bike.description}}</textarea>
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Save</button>

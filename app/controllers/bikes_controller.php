@@ -27,12 +27,12 @@ class BikeController extends BaseController {
 		));
 		$bike->save();
 
-		Redirect::to('/bikes');
+		Redirect::to('bikes');
 	}
 
 	public static function update($id) {
 		Bike::update($id, $_POST);
-		Redirect::to('/bikes');
+		Redirect::to('bikes');
 	}
 
 	public static function edit($id) {
