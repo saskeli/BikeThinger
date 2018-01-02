@@ -40,7 +40,7 @@ class Bike extends BaseModel {
 		return $bikes;
 	}
 
-	public static function rowToArr($row) {
+	private static function rowToArr($row) {
 		return array(
 			'id' => $row['id'],
         	'user_id' => $row['user_id'],

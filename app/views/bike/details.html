@@ -35,29 +35,6 @@
         {{component.model}}
         {% endif %}
       </td>
-      <td>{{component.year}}</td>
-      <td> 
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-            {% if component.retired %}
-              Retired
-            {% elseif component.in_use %}
-              {{bikes[component.id]}}
-            {% else %}
-              Not in use
-            {% endif %}
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            {% for b in bikes %}
-            <li><a href="#">{{b}}</a></li>
-            {% endfor %}
-            <li><a href="#">Not in use</a></li>
-            <li><a href="#">Retired</a></li>
-          </ul>
-        </div>
-      </td>
-      <td><a class="btn btn-default btn-sm" href="#">Edit</a></td>
     </tr>
     {% endfor %}
     </tbody>
