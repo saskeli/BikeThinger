@@ -31,7 +31,7 @@ class BikeController extends BaseController {
 	}
 
 	public static function update($id) {
-		Bike::udpate($id, $_POST);
+		Bike::update($id, $_POST);
 		Redirect::to('/bikes');
 	}
 
