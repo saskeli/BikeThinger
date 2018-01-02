@@ -8,6 +8,7 @@ class BikeController extends BaseController {
 
 	public static function show($id) {
 		$bike = Bike::find($id);
-		View::make('bike/details.html', array('bike' => $bike));
+		$components = Component::forbike($id);
+		View::make('bike/details.html', array('bike' => $bike, 'components' => $components));
 	}
 }
