@@ -2,7 +2,7 @@
 {% block content %}
   <h1>Editing {{bike.name}}</h1>
 
-  <form method="post" action="{{base_path}}bike/:id">
+  <form method="post" action="{{base_path}}bike/{{bike.id}}">
     <div class="form-group">
       <label>Bike</label>
       <input name="name" value="{{bike.name}}" class="form-control" type="text" />
