@@ -16,7 +16,7 @@ $routes->get('/bike/new', function() {
   BikeController::create();
 });
 
-$routes->get('/bike/edit/:id', function($if) {
+$routes->get('/bike/edit/:id', function($id) {
   BikeController::edit($id);
 });
 
