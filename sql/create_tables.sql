@@ -30,7 +30,7 @@ CREATE TABLE component(
 	model varchar(400),
 	link varchar(400),
 	year INTEGER, 
-	in_use BOOLEAN DEFAULT TRUE,
+	in_use BOOLEAN DEFAULT FALSE,
 	retired BOOLEAN DEFAULT FALSE,
 	description varchar(400) 
 );

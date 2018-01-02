@@ -46,4 +46,5 @@ class GearController extends BaseController {
 			Gear::delete($id);
 		}
 		Redirect::to('gear');
+	}
 }
