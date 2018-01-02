@@ -12,10 +12,8 @@
     </title>
 
     {% block head %}
-      <!-- Bootstrap (tyylitiedosto) -->
       <link href="{{base_path}}/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-      <!-- Oma tyylitiedostomme -->
       <link href="{{base_path}}/assets/css/site.css" rel="stylesheet">
     {% endblock %}
   </head>
@@ -38,19 +36,18 @@
 
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="nav navbar-nav">
-            <li><a href="#">Bikes</a></li>
-            <li><a href="#">Components</a></li>
-            <li><a href="#">Gear</a></li>
+            <li><a href="{{base_path}}bikes">Bikes</a></li>
+            <li><a href="{{base_path}}components">Components</a></li>
+            <li><a href="{{base_path}}gear">Gear</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Login</a></li>
+            <li><a href="{{base_path}}login">Login</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
     <div id="main-container">
-      <!-- Dynaaminen sisältö tulee tähän -->
       {% block content %}{% endblock %}
     </div>
 
@@ -58,10 +55,8 @@
       <!-- jQuery -->
       <script src="{{base_path}}/assets/js/jquery.min.js"></script>
 
-      <!-- Bootstrap (skriptitiedosto) -->
       <script src="{{base_path}}/assets/bootstrap/js/bootstrap.min.js"></script>
 
-      <!-- Oma skriptitiedostomme -->
       <script src="{{base_path}}/assets/js/site.js"></script>
     {% endblock %}
   </body>
