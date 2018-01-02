@@ -57,7 +57,7 @@ class Bike extends BaseModel {
 		$query = DB::connection()->prepare(
 			'UPDATE bike SET (distance, name, model, link, year, description) = ' . 
 			'(:distance, :name, :model, :link, :year, :description)' . 
-			'WHERE id = :id')
+			'WHERE id = :id');
 		$query->execute(array(
 			'distance' => $fields[distance],
 			'name' => $fields[name],
