@@ -34,4 +34,9 @@ class BikeController extends BaseController {
 		Bike::udpate($id, $_POST);
 		Redirect::to('/bikes');
 	}
+
+	public static function edit($id) {
+		$bike = Bike::find($id);
+		View::make('bike/edit.html', array('bike' => $bike));
+	}
 }

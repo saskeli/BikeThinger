@@ -16,8 +16,16 @@ $routes->get('/bike/new', function() {
   BikeController::create();
 });
 
+$routes->get('/bike/edit/:id', function($if) {
+  BikeController::edit($id);
+});
+
 $routes->get('/bike/:id', function($id) {
   BikeController::show($id);
+});
+
+$routes->post('/bike/:id', function($id) {
+  BikeController::update($id);
 });
 
 $routes->get('/gear', function() {
