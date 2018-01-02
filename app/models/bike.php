@@ -64,7 +64,7 @@ class Bike extends BaseModel {
 			'model' => $fields['model'],
 			'link' => $fields['link'],
 			'year' => $fields['year'], 
-			'description' => $fields['description']
+			'description' => $fields['description'],
 			'id' => $id
 		));
 	}
