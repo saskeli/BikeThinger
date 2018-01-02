@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Editing {{component.name}}</h1>
+
+  <form method="post" action="{{base_path}}component/{{component.id}}">
+    <div class="form-group">
+      <label>Bike</label>
+      <input name="name" value="{{component.name}}" class="form-control" type="text" />
+    </div>
+    <div class="fom">
+      <label>Kilometers</label>
+      <input type="number" name="distance" class="form-control" value="{{component.distance}}">
+    </div>
+    <div class="form-group">
+      <label>Manufacturer / Model</label>
+      <input name="model" value="{{component.model}}" class="form-control" type="text" />
+    </div>
+    <div class="form-group">
+      <label>Link</label>
+      <input name="link" value="{{component.link}}" class="form-control" type="text" />
+    </div>
+    <div class="form-group">
+      <label>Year</label>
+      <input name="year" value="{{component.year}}" class="form-control" type="number" />
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea name="description" class="form-control">{{component.description}}</textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+  <form method="post" action="{{base_path}}component/delete/{{component.id}}" class="form-inline">
+    <input type="text" name="name" value="Component name here" class="form-control" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+{% endblock %}

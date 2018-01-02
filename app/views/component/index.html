@@ -10,7 +10,6 @@
       <th>Manufacturer / Model</th>
       <th>Year</th>
       <th>Status</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -47,7 +46,6 @@
           </ul>
         </div>
       </td>
-      <td><a class="btn btn-default btn-sm" href="#">Edit</a></td>
     </tr>
     {% endfor %}
   </tbody>
@@ -55,7 +53,7 @@
 
 
 <p>
-  <a href="#" class="btn btn-success">Add component</a>
+  <a href="{{base_path}}component/new" class="btn btn-success">Add component</a>
 </p>
 
 {% endblock %}

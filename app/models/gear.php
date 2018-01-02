@@ -6,6 +6,19 @@ class Gear extends BaseModel {
 		parent::__construct($attributes);
 	}
 
+	public function save() {
+		$query = DB::connection()->prepare(
+			'INSERT INTO gear (user_id, name, model, link, year, description)' . 
+			'VALUES (:user_id, :name, :model, :link, :year, :description)');
+		$query->execute(array(
+			'user_id' => $this->user_id, 
+			'name' => $this->name,
+			'model' => $this->model, 
+			'link' => $this->link,
+			'year' => $this->year,
+			'description' => $this->description));
+	}
+
 	public static function all() {
 		$query = DB::connection()->prepare('SELECT * FROM gear');
 		$query->execute();
@@ -28,6 +41,27 @@ class Gear extends BaseModel {
 		return null;
 	}
 
+	public static function update($id, $fields) {
+		$query = DB::connection()->prepare(
+			'UPDATE gear SET (distance, name, model, link, year, description) = ' . 
+			'(:distance, :name, :model, :link, :year, :description)' . 
+			'WHERE id = :id');
+		$query->execute(array(
+			'distance' => $fields['distance'],
+			'name' => $fields['name'],
+			'model' => $fields['model'],
+			'link' => $fields['link'],
+			'year' => $fields['year'], 
+			'description' => $fields['description'],
+			'id' => $id
+		));
+	}
+
+	public static function delete($id) {
+		$query = DB::connection()->prepare(
+			'DELETE FROM gear WHERE id = :id');
+		$query->execute(array('id' => $id));
+	}
 
 	private static function rowToArr($row) {
 		return array(

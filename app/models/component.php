@@ -6,6 +6,18 @@ class Component extends BaseModel {
 		parent::__construct($attributes);
 	}
 
+	public function save() {
+		$query = DB::connection()->prepare(
+			'INSERT INTO component (user_id, name, model, link, year, description)' . 
+			'VALUES (:user_id, :name, :model, :link, :year, :description)');
+		$query->execute(array(
+			'user_id' => $this->user_id, 
+			'name' => $this->name,
+			'model' => $this->model, 
+			'link' => $this->link,
+			'year' => $this->year,
+			'description' => $this->description));
+	}
 
 	public static function forbike($id) {
 		$query = DB::connection()->prepare('SELECT * FROM component WHERE bike_id = :id');
@@ -38,6 +50,28 @@ class Component extends BaseModel {
 			return $component;
 		}
 		return null;
+	}
+
+	public static function update($id, $fields) {
+		$query = DB::connection()->prepare(
+			'UPDATE component SET (distance, name, model, link, year, description) = ' . 
+			'(:distance, :name, :model, :link, :year, :description)' . 
+			'WHERE id = :id');
+		$query->execute(array(
+			'distance' => $fields['distance'],
+			'name' => $fields['name'],
+			'model' => $fields['model'],
+			'link' => $fields['link'],
+			'year' => $fields['year'], 
+			'description' => $fields['description'],
+			'id' => $id
+		));
+	}
+
+	public static function delete($id) {
+		$query = DB::connection()->prepare(
+			'DELETE FROM component WHERE id = :id');
+		$query->execute(array('id' => $id));
 	}
 
 	private static function rowToArr($row) {

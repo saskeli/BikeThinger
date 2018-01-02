@@ -36,12 +36,52 @@ $routes->get('/gear', function() {
   GearController::index();
 });
 
+$routes->post('/gear', function() {
+  GearController::store();
+});
+
+$routes->get('/gear/new', function() {
+  GearController::create();
+});
+
+$routes->get('/gear/edit/:id', function($id) {
+  GearController::edit($id);
+});
+
+$routes->post('/gear/delete/:id', function($id) {
+  GearController::delete($id);
+});
+
+$routes->post('/gear/:id', function($id) {
+  GearController::update($id);
+});
+
 $routes->get('/gear/:id', function($id) {
   GearController::show($id);
 });
 
 $routes->get('/components', function() {
   ComponentController::index();
+});
+
+$routes->post('/components', function() {
+  ComponentController::store();
+});
+
+$routes->get('/component/new', function() {
+  ComponentController::create();
+});
+
+$routes->get('/component/edit/:id', function($id) {
+  ComponentController::edit($id);
+});
+
+$routes->post('/component/delete/:id', function($id) {
+  ComponentController::delete($id);
+});
+
+$routes->post('/component/:id', function($id) {
+  ComponentController::update($id);
 });
 
 $routes->get('/component/:id', function($id) {
