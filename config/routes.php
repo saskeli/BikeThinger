@@ -20,6 +20,10 @@ $routes->get('/bike/edit/:id', function($id) {
   BikeController::edit($id);
 });
 
+$routes->post('/bike/delete/:id', function($id) {
+  BikeController::delete($id);
+});
+
 $routes->get('/bike/:id', function($id) {
   BikeController::show($id);
 });

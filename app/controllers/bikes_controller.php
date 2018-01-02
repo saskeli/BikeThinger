@@ -39,4 +39,12 @@ class BikeController extends BaseController {
 		$bike = Bike::find($id);
 		View::make('bike/edit.html', array('bike' => $bike));
 	}
+
+	public static function delete($id, $enteredName) {
+		$bike = Bike::find($id);
+		if ($bike->name === $enteredName) {
+			Bike::delete($id);
+		}
+		Redirect::to('bikes');
+	}
 }

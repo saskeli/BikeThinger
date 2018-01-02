@@ -31,4 +31,8 @@
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
   </form>
+  <form method="post" action="{{base_path}}bike/delete/{{bike.id}}" class="form-inline">
+    <input type="text" name="name" value="Bike name here" class="form-control" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </p>
 {% endblock %}

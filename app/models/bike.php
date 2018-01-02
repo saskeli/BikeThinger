@@ -69,6 +69,12 @@ class Bike extends BaseModel {
 		));
 	}
 
+	public static function delete($id) {
+		$query = DB::connection()->prepare(
+			'DELETE FROM bike WHERE id = _id');
+		$query->execute(array('id' => $id));
+	}
+
 	private static function rowToArr($row) {
 		return array(
 			'id' => $row['id'],
