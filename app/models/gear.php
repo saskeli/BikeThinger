@@ -12,18 +12,7 @@ class Gear extends BaseModel {
 		$rows = $query->fetchAll();
     	$gear = array();
     	foreach($rows as $row){
-      		$gear[] = new Gear(array(
-        		'id' => $row['id'],
-        		'user_id' => $row['user_id'],
-        		'distance' => $row['distance'],
-        		'name' => $row['name'],
-        		'model' => $row['model'],
-        		'link' => $row['link'],
-        		'year' => $row['year'],
-        		'in_use' => $row['in_use'],
-        		'retired' => $row['retired'],
-        		'description' => $row['description']
-      		));
+      		$gear[] = new Gear(Gear::rowToArr($row));
 		}
 		return $gear;
 	}
@@ -33,20 +22,25 @@ class Gear extends BaseModel {
 		$query->execute(array('id' => $id));
 		$row = $query->fetch();
 		if ($row) {
-			$gear = new Gear(array(
-				'id' => $row['id'],
-        		'user_id' => $row['user_id'],
-        		'distance' => $row['distance'],
-        		'name' => $row['name'],
-        		'model' => $row['model'],
-        		'link' => $row['link'],
-        		'year' => $row['year'],
-        		'in_use' => $row['in_use'],
-        		'retired' => $row['retired'],
-        		'description' => $row['description']
-			));
+			$gear = new Gear(Gear::rowToArr($row));
 			return $gear;
 		}
 		return null;
+	}
+
+
+	private static function rowToArr($row) {
+		return array(
+			'id' => $row['id'],
+        	'user_id' => $row['user_id'],
+        	'distance' => $row['distance'],
+        	'name' => $row['name'],
+        	'model' => $row['model'],
+        	'link' => $row['link'],
+        	'year' => $row['year'],
+        	'in_use' => $row['in_use'],
+        	'retired' => $row['retired'],
+        	'description' => $row['description']
+		);
 	}
 }

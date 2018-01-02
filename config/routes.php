@@ -8,6 +8,14 @@ $routes->get('/bikes', function() {
   BikeController::index();
 });
 
+$routes->post('/bikes', function() {
+  BikeController::store();
+});
+
+$routes->get('/bike/new', function() {
+  BikeController::create();
+});
+
 $routes->get('/bike/:id', function($id) {
   BikeController::show($id);
 });

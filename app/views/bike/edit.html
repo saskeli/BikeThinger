@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Editing {{bike.name}}</h1>
+
+  <form method="post" action="{{base_path}}/bike/:id">
+    <div class="form-group">
+      <label>Bike</label>
+      <input name="name" value="{{bike.name}}" class="form-control" type="text" />
+    </div>
+    <div class="fom">
+      <label>Kilometers</label>
+      <input type="number" name="distance" class="form-control" value="{{bike.distance}}">
+    </div>
+    <div class="form-group">
+      <label>Manufacturer / Model</label>
+      <input name="model" value="{{bike.model}}" class="form-control" type="text" />
+    </div>
+    <div class="form-group">
+      <label>Link</label>
+      <input name="link" value="{{bike.link}}" class="form-control" type="text" />
+    </div>
+    <div class="form-group">
+      <label>Year</label>
+      <input name="year" value="{{bike.year}}" class="form-control" type="number" />
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea name="description" class="form-control">{{bike.description}}
+      </textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+{% endblock %}

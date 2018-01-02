@@ -7,6 +7,19 @@ class Bike extends BaseModel {
 		parent::__construct($attributes);
 	}
 
+	public function save() {
+		$query = DB::connection()->prepare(
+			'INSERT INTO bike (user_id, name, model, link, year, description)' . 
+			'VALUES (:user_id, :name, :mode, :link, :year, :description)')
+		$query->execute(array(
+			'user_id' => $this->user_id, 
+			'name' => $this->name,
+			'model' => $this->model, 
+			'link' => $this->link,
+			'year' => $this->year,
+			'description' => $this->description));
+	}
+
 	public static function all() {
 		$query = DB::connection()->prepare('SELECT * FROM bike');
 		$query->execute();
