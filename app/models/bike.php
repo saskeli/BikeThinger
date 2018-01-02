@@ -53,6 +53,21 @@ class Bike extends BaseModel {
 		return $bikes;
 	}
 
+	public static function update($id, $fields) {
+		$query = DB::connection()->prepare(
+			'UPDATE bike SET (distance, name, model, link, year, description) = ' . 
+			'(:distance, :name, :model, :link, :year, :description)' . 
+			'WHERE id = :id')
+		$query->execute(array(
+			'distance' => $fields[distance],
+			'name' => $fields[name],
+			'model' => $fields[model],
+			'link' => $fields[link],
+			'year' => $fields[year], 
+			'description' => $fields[description]
+		));
+	}
+
 	private static function rowToArr($row) {
 		return array(
 			'id' => $row['id'],
