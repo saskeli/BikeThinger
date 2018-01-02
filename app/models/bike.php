@@ -59,12 +59,12 @@ class Bike extends BaseModel {
 			'(:distance, :name, :model, :link, :year, :description)' . 
 			'WHERE id = :id');
 		$query->execute(array(
-			'distance' => $fields[distance],
-			'name' => $fields[name],
-			'model' => $fields[model],
-			'link' => $fields[link],
-			'year' => $fields[year], 
-			'description' => $fields[description]
+			'distance' => $fields['distance'],
+			'name' => $fields['name'],
+			'model' => $fields['model'],
+			'link' => $fields['link'],
+			'year' => $fields['year'], 
+			'description' => $fields['description']
 		));
 	}
 
