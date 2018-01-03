@@ -2,6 +2,13 @@
 
 Simple cycling gear and component manager inspired by Strava's "My Gear" section.
 
+**If login is required**
+
+* username: **_admin_**
+* password: **_root_**
+
+**is a test user**
+
 ## Links
 
 * [BikeThinger on heroku](https://bikethinger.herokuapp.com)

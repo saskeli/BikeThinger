@@ -19,9 +19,10 @@ class Component extends BaseModel {
       'description' => $this->description));
   }
 
-  public static function forbike($id) {
-    $query = DB::connection()->prepare('SELECT * FROM component WHERE bike_id = :id');
-    $query->execute(array('id' => $id));
+  public static function forbike($id, $user_id) {
+    $query = DB::connection()->prepare(
+      'SELECT * FROM component WHERE bike_id = :id AND user_id = :user_id');
+    $query->execute(array('id' => $id, 'user_id' => $user_id));
     $rows = $query->fetchAll();
     $components = array();
     foreach ($rows as $row) {
@@ -30,9 +31,10 @@ class Component extends BaseModel {
     return $components;
   }
 
-  public static function all() {
-    $query = DB::connection()->prepare('SELECT * FROM component');
-    $query->execute();
+  public static function all($user_id) {
+    $query = DB::connection()->prepare(
+      'SELECT * FROM component WHERE user_id = :user_id');
+    $query->execute(array('user_id' => $user_id));
     $rows = $query->fetchAll();
       $component = array();
       foreach($rows as $row){
@@ -41,13 +43,13 @@ class Component extends BaseModel {
     return $component;
   }
 
-  public static function find($id) {
-    $query = DB::connection()->prepare('SELECT * FROM component WHERE id = :id LIMIT 1');
-    $query->execute(array('id' => $id));
+  public static function find($id, $user_id) {
+    $query = DB::connection()->prepare(
+      'SELECT * FROM component WHERE id = :id AND user_id = :user_id LIMIT 1');
+    $query->execute(array('id' => $id, 'user_id' => $user_id));
     $row = $query->fetch();
     if ($row) {
-      $component = new Component(Component::rowToArr($row));
-      return $component;
+      return new Component(Component::rowToArr($row));
     }
     return null;
   }

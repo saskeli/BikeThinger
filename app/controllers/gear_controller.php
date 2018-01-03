@@ -2,22 +2,30 @@
 
 class GearController extends BaseController {
   public static function index() {
-    $gear = Gear::all();
+    self::check_logged_int();
+    $gear = Gear::all($_SESSION['user']);
     View::make('gear/index.html', array('gear' => $gear));
   }
 
   public static function show($id) {
-    $gear = Gear::find($id);
-    View::make('gear/details.html', array('gear' => $gear));
+    self::check_logged_int();
+    $gear = Gear::find($id, $_SESSION['user']);
+    if (is_null($gear)) {
+      Redirect::to('gear', 'No such gear');
+    } else {
+      View::make('gear/details.html', array('gear' => $gear));
+    }
   }
 
   public static function create() {
+    self::check_logged_int();
     View::make('gear/new.html');
   }
 
   public static function store() {
+    self::check_logged_int();
     $gear = new Gear(array(
-      'user_id' => 1,
+      'user_id' => $_SESSION['user'],
       'name' => $_POST['name'],
       'model' => $_POST['model'],
       'link' => $_POST['link'],
@@ -30,21 +38,37 @@ class GearController extends BaseController {
   }
 
   public static function edit($id) {
-    $gear = Gear::find($id);
-    View::make('gear/edit.html', array(
-      'gear' => $gear));
+    self::check_logged_int();
+    $gear = Gear::find($id, $_SESSION['user']);
+    if (is_null($gear)) {
+      Redirect::to('gear', 'No such gear');
+    } else {
+      View::make('gear/edit.html', array(
+        'gear' => $gear));
+    }
   }
 
   public static function update($id) {
-    Gear::update($id, $_POST);
-    Redirect::to('gear');
+    self::check_logged_int();
+    $gear = Gear::find($id, $_SESSION['user']);
+    if (is_null($gear)) {
+      Redirect::to('gear', 'No such gear');
+    } else {
+      Gear::update($id, $_POST);
+      Redirect::to('gear');
+    }
   }
 
   public static function delete($id) {
-    $gear = Gear::find($id);
-    if ($gear->name === $_POST['name']) {
-      Gear::delete($id);
+    self::check_logged_int();
+    $gear = Gear::find($id, $_SESSION['user']);
+    if (is_null($gear)) {
+      Redirect::to('gear', 'No such gear');
+    } else {
+      if ($gear->name === $_POST['name']) {
+        Gear::delete($id);
+      }
+      Redirect::to('gear');
     }
-    Redirect::to('gear');
   }
 }

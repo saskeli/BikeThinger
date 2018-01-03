@@ -19,9 +19,10 @@ class Gear extends BaseModel {
       'description' => $this->description));
   }
 
-  public static function all() {
-    $query = DB::connection()->prepare('SELECT * FROM gear');
-    $query->execute();
+  public static function all($user_id) {
+    $query = DB::connection()->prepare(
+      'SELECT * FROM gear WHERE user_id = :user_id');
+    $query->execute(array('user_id' => $user_id));
     $rows = $query->fetchAll();
       $gear = array();
       foreach($rows as $row){
@@ -30,13 +31,15 @@ class Gear extends BaseModel {
     return $gear;
   }
 
-  public static function find($id) {
-    $query = DB::connection()->prepare('SELECT * FROM gear WHERE id = :id LIMIT 1');
-    $query->execute(array('id' => $id));
+  public static function find($id, $user_id) {
+    $query = DB::connection()->prepare(
+      'SELECT * FROM gear WHERE id = :id AND user_id = :user_id LIMIT 1');
+    $query->execute(array('id' => $id, 'user_id' => $user_id));
     $row = $query->fetch();
     if ($row) {
-      $gear = new Gear(Gear::rowToArr($row));
-      return $gear;
+      return new Gear(Gear::rowToArr($row));
+    } else {
+      Redirect::to('gear', 'No such gear');
     }
     return null;
   }

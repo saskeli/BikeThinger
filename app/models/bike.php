@@ -20,9 +20,10 @@ class Bike extends BaseModel {
       'description' => $this->description));
   }
 
-  public static function all() {
-    $query = DB::connection()->prepare('SELECT * FROM bike');
-    $query->execute();
+  public static function all($user_id) {
+    $query = DB::connection()->prepare(
+      'SELECT * FROM bike WHERE user_id = :user_id');
+    $query->execute(array('user_id' => $user_id));
     $rows = $query->fetchAll();
     $bikes = array();
     foreach($rows as $row){
@@ -31,9 +32,10 @@ class Bike extends BaseModel {
     return $bikes;
   }
 
-  public static function find($id) {
-    $query = DB::connection()->prepare('SELECT * FROM bike WHERE id = :id LIMIT 1');
-    $query->execute(array('id' => $id));
+  public static function find($id, $user_id) {
+    $query = DB::connection()->prepare(
+      'SELECT * FROM bike WHERE id = :id AND user_id = :user_id LIMIT 1');
+    $query->execute(array('id' => $id, 'user_id' => $user_id));
     $row = $query->fetch();
     if ($row) {
       $bike = new Bike(Bike::rowToArr($row));
@@ -42,9 +44,10 @@ class Bike extends BaseModel {
     return null;
   }
 
-  public static function allWithId() {
-    $query = DB::connection()->prepare('SELECT id, name FROM bike');
-    $query->execute();
+  public static function allWithId($user_id) {
+    $query = DB::connection()->prepare(
+      'SELECT id, name FROM bike WHERE user_id = :user_id');
+    $query->execute(array('user_id' => $user_id));
     $rows = $query->fetchAll();
     $bikes = array();
     foreach ($rows as $row) {
