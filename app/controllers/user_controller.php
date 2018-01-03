@@ -16,7 +16,7 @@ class UserController extends BaseController {
   }
 
   public static function logout() {
-    self::check_logged_int();
+    self::check_logged_in();
     unset($_SESSION['user']);
     Redirect::to('login');
   }
