@@ -34,7 +34,7 @@ class User extends BaseModel {
   private static function rowToArr($row) {
     return array(
       'id' => $row['id'],
-        'name' => $row['name'],
+        'name' => $row['username'],
         'password' => $row['password']
     );
   }
