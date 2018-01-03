@@ -2,7 +2,7 @@
 -- heroku pg:psql < add_test_data.sql
 --
 
-INSERT INTO ut (username, password) VALUES ('saskeli', 'nakki');
+INSERT INTO ut (username, password) VALUES ('saskeli', '$2y$10$0uXd41RE7pKywTQ.eyQZZ.7UtlPzZsp3ETt3ozGq4EZRptcQNSzDW');
 
 INSERT INTO bike (user_id, distance, name, model, year, description)
 VALUES (1, 500, 'Spessu', 'Specialized diverge comp carbon', 2017, 'Ostettu sellon pyörästä kesällä 2017. Kuiturunko ja Shimano 105 osasarja'),

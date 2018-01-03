@@ -5,7 +5,8 @@
 CREATE TABLE ut(
 	id SERIAL PRIMARY KEY,
 	username varchar(50) NOT NULL,
-	password varchar(50) NOT NULL
+	password varchar(255) NOT NULL,
+	session varchar(255) DEFAULT NULL
 );
 
 CREATE TABLE bike(
