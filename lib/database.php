@@ -3,7 +3,6 @@
   class DB{
 
     public static function connection(){
-      // Haetaan tietokantakonfiguraatio
 
       $connection_config = DatabaseConfig::connection_config();
 
@@ -12,12 +11,11 @@
         $connection = new PDO('pgsql:host=' . $dbconf['host'] . ';dbname=' . substr($dbconf['path'], 1) . 
           ';port=' . $dbconf['port'] . ';user=' . $dbconf['user'] . ';password=' . $dbconf['pass']);
         $connection->exec('SET NAMES UTF8');
-        // Näytetään virheilmoitukset
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
           
       } catch (PDOException $e) {
-          die('Virhe tietokantayhteydessä tai tietokantakyselyssä: ' . $e->getMessage());
+          die('Error in database connection or query: ' . $e->getMessage());
       }
       return $connection;
     }

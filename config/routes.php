@@ -88,18 +88,6 @@ $routes->get('/component/:id', function($id) {
   ComponentController::show($id);
 });
 
-$routes-> get('/login', function() {
-  HelloWorldController::Login();
-});
-
-$routes-> get('/edit', function() {
-  HelloWorldController::Edit();
-});
-
-$routes-> get('/details', function() {
-  HelloWorldController::Details();
-});
-
 $routes->get('/sandbox', function() {
   HelloWorldController::sandbox();
 });

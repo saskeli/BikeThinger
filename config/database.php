@@ -2,14 +2,7 @@
 
   class DatabaseConfig{
 
-    // Valitse käyttämäsi tietokantapalvelin - PostgreSQL (psql) tai MySQL (mysql)
     private static $use_database = 'psql';
-
-    // Muuta users-ympäristöä asettamalle oikeat arvot KAYTTAJATUNNUS-kohtaan (käyttäjätunnuksesi)
-    // ja SALASANA-kohtaan (tietokantasi pääkäyttäjän salasana)
-
-    // Huomioi että MySQL:n käyttäjätunnus ja salasana ovat tietoa joka olisi syytä pitää
-    // salassa, eli älä talleta tätä Githubiin.
 
     private static $connection_config = array(
       'psql' => array(
