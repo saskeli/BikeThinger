@@ -9,7 +9,7 @@ class User extends BaseModel {
 
   public static function authenticate($username, $password) {
     $query = DB::connection()->prepare(
-      'SELECT * FROM ut WHERE name = :username LIMIT 1');
+      'SELECT * FROM ut WHERE username = :username LIMIT 1');
     $query->execute(array('username' => $username));
     $row = $query->fetch();
 
