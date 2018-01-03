@@ -10,9 +10,7 @@
 
         $content['base_path'] = BASE_PATH;
 
-        if(method_exists('BaseController', 'get_user_logged_in')){
-          $content['user_logged_in'] = BaseController::get_user_logged_in();
-        }
+        $content['user_logged_in'] = BaseController::get_user_logged_in();
 
         echo $twig->render($view, $content);
       } catch (Exception $e){
