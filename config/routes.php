@@ -4,6 +4,14 @@ $routes->get('/', function() {
   BikeController::index();
 });
 
+$routes->get('/login', function() {
+  UserController::login();
+});
+
+$routes->post('/login', function() {
+  UserController::authenticate();
+});
+
 $routes->get('/bikes', function() {
   BikeController::index();
 });

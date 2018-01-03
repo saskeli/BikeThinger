@@ -20,9 +20,9 @@
       <td>{{bike.distance}}</td>
       <td>
         {% if bike.link %}
-          <a  href="{{bike.link}}">{{bike.model}}</a>
+        <a  href="{{bike.link}}">{{bike.model}}</a>
         {% else %}
-          {{bike.model}}
+        {{bike.model}}
         {% endif %}
       </td>
       <td>{{bike.year}}</td>
@@ -30,9 +30,9 @@
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
             {% if bike.in_use %}
-              In use
+            In use
             {% else %}
-              Retired
+            Retired
             {% endif %}
             <span class="caret"></span>
           </button>
