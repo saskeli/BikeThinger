@@ -8,6 +8,10 @@ $routes->get('/login', function() {
   UserController::login();
 });
 
+$routes->get('/logout', function() {
+  UserController::logout();
+});
+
 $routes->post('/login', function() {
   UserController::authenticate();
 });
