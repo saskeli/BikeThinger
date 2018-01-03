@@ -14,4 +14,10 @@ class UserController extends BaseController {
       Redirect::to('bikes');
     }
   }
+
+  public static function logout() {
+    self::check_logged_int();
+    unset($_SESSION['user']);
+    Redirect::to('login');
+  }
 }

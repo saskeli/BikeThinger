@@ -31,11 +31,6 @@ class User extends BaseModel {
     return null;
   }
 
-  public static function logout() {
-    self::check_logged_int();
-    unset($_SESSION['user']);
-  }
-
   private static function rowToArr($row) {
     return array(
       'id' => $row['id'],
