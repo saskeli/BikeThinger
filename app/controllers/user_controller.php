@@ -11,7 +11,7 @@ class UserController extends BaseController {
       View::make('login.html', array('error' => 'Invalid username/password'));
     } else {
       $_SESSION['user'] = $user->id;
-      Redirect::to('/bikes');
+      Redirect::to('bikes');
     }
   }
 }
