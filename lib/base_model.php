@@ -28,18 +28,12 @@
       $validator->rule('min', ['distance', 'year'], 0);
       $valid = $validator->validate();
       $err = $validator->errors();
-      if ($valid) {
-        error_log("Validation was successfull");
-      } else {
-        error_log("Validation failed");
-      }
       $errors = array();
-      foreach ($errors as $param => $earr) {
+      foreach ($err as $param => $earr) {
         foreach ($earr as $index => $issue) {
           $errors[] = $issue;
         }
       }
-      error_log("error list size: " . sizeof($errors));
       return $errors;
     }
 
