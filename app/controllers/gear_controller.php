@@ -58,7 +58,7 @@ class GearController extends BaseController {
       $vgear = new Gear(GearController::gearFromPost($user_id, $values));
       $errors = $vgear->errors();
       if ($errors) {
-        View::make('gear/edit.html', array('gear', $gear));
+        View::make('gear/edit.html', array('gear', $gear, 'errors' => $errors));
       } else {
         Gear::update($id, $_POST);
         Redirect::to('gear');

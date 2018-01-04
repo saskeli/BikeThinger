@@ -67,7 +67,7 @@ class ComponentController extends BaseController {
       $vcomponent = new Component(ComponentController::componentFromPost($user_id, $values));
       $errors = $vcomponent->errors();
       if ($errors) {
-        View::make('component/edit.html', array('component' => $component));
+        View::make('component/edit.html', array('component' => $component, 'errors' => $errors));
       } else {
         Component::update($id, $_POST);
         Redirect::to('components');

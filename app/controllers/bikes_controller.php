@@ -50,7 +50,7 @@ class BikeController extends BaseController {
       $vbike = new Bike(BikeController::bikeFromPost($user_id, $values));
       $errors = $vbike->errors();
       if ($errors) {
-        View::make('bike/edit.html', array('bike' => $bike));
+        View::make('bike/edit.html', array('bike' => $bike, 'errors' => $errors));
       } else {
         Bike::update($id, $values);
         Redirect::to('bikes');
