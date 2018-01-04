@@ -19,7 +19,7 @@
         'year' => $this->year,
         'description' => $this->description));
       $validator->rule('required', ['name', 'distance']);
-      $validator->rule('requred', ['model', 'link', 'year', 'description'], true);
+      $validator->rule('required', ['model', 'link', 'year', 'description'], true);
       $validator->rule('lengthMax', 'name', 50);
       $validator->rule('lengthMax', ['model', 'link', 'description'], 400);
       $validator->rule('numeric', 'distance');
