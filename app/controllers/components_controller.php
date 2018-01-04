@@ -33,17 +33,16 @@ class ComponentController extends BaseController {
 
   public static function store() {
     self::check_logged_in();
-    $component = new Component(array(
-      'user_id' => $_SESSION['user'],
-      'name' => $_POST['name'],
-      'model' => $_POST['model'],
-      'link' => $_POST['link'],
-      'year' => $_POST['year'],
-      'description' => $_POST['description']
-    ));
-    $component->save();
-
-    Redirect::to('components');
+    $user_id = $_SESSION['user'];
+    $values  = $_POST;
+    $component = new Component(ComponentController::componentFromPost($user_id, $values));
+    $erorrs = $component->erorrs();
+    if ($errors) {
+      View::make('component/new.html', array('errors' => $errors));
+    } else {
+      $component->save();
+      Redirect::to('components');
+    }
   }
 
   public static function edit($id) {
@@ -59,12 +58,20 @@ class ComponentController extends BaseController {
 
   public static function update($id) {
     self::check_logged_in();
+    $user_id = $_SESSION['user'];
+    $values = $_POST;
     $component = Component::find($id, $_SESSION['user']);
     if (is_null($component)) {
       Redirect::to('components', array('error' => 'No such component'));
     } else {
-      Component::update($id, $_POST);
-      Redirect::to('components');
+      $vcomponent = new Component(ComponentController::componentFromPost($user_id, $values));
+      $errors = $vcomponent->errors();
+      if ($errors) {
+        View::make('component/edit.html', array('component' => $component));
+      } else {
+        Component::update($id, $_POST);
+        Redirect::to('components');
+      }
     }
   }
 
@@ -79,5 +86,21 @@ class ComponentController extends BaseController {
       }
       Redirect::to('components');
     }
+  }
+
+  private static function componentFromPost($user_id, $values) {
+    $distance = 0;
+    if (isset($values['distance'])) {
+      $distance = $values['distance'];
+    }
+    return new Component(array(
+      'user_id' => $user_id,
+      'distance' => $distance,
+      'name' => $values['name'],
+      'model' => $values['model'],
+      'link' => $values['link'],
+      'year' => $values['year'],
+      'description' => $values['description']
+    ));
   }
 }

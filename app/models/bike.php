@@ -9,10 +9,11 @@ class Bike extends BaseModel {
 
   public function save() {
     $query = DB::connection()->prepare(
-      'INSERT INTO bike (user_id, name, model, link, year, description)' .
-      'VALUES (:user_id, :name, :model, :link, :year, :description)');
+      'INSERT INTO bike (user_id, distance, name, model, link, year, description)' .
+      'VALUES (:user_id, :distance, :name, :model, :link, :year, :description)');
     $query->execute(array(
       'user_id' => $this->user_id,
+      'distance' => 0,
       'name' => $this->name,
       'model' => $this->model,
       'link' => $this->link,

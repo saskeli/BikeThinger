@@ -1,28 +1,39 @@
 <?php
 
   class BaseModel{
-    // "protected"-attribuutti on käytössä vain luokan ja sen perivien luokkien sisällä
-    protected $validators;
-
     public function __construct($attributes = null){
-      // Käydään assosiaatiolistan avaimet läpi
       foreach($attributes as $attribute => $value){
-        // Jos avaimen niminen attribuutti on olemassa...
         if(property_exists($this, $attribute)){
-          // ... lisätään avaimen nimiseen attribuuttin siihen liittyvä arvo
           $this->{$attribute} = $value;
         }
       }
     }
 
     public function errors(){
-      // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
+      $validator = new Valitron\Validator(array(
+        'user_id' => $this->name,
+        'distance' => $this->distance,
+        'name' => $this->name,
+        'model' => $this->model,
+        'link' => $this->link,
+        'year' => $this->year,
+        'description' => $this->description));
+      $validator->rule('required', ['name', 'distance']);
+      $validator->rule('optional', ['model', 'link', 'year', 'description']);
+      $validator->rule('lengthMax', 'name', 50);
+      $validator->rule('lengthMax', ['model', 'link', 'description'], 400);
+      $validator->rule('numeric', 'distance');
+      $validator->rule('integer', 'year');
+      $validator->rule('url', 'link');
+      $validator->rile('min', ['distance', 'year'], 0);
+      $validator->validate();
+      $err = $validator->errors();
       $errors = array();
-
-      foreach($this->validators as $validator){
-        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+      foreach ($errors as $param => $earr) {
+        foreach ($earr as $index => $issue) {
+          $errors[] = $issue;
+        }
       }
-
       return $errors;
     }
 

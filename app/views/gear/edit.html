@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Editing {{gear.name}}</h1>
-
+  {% if errors %}
+  <div class="alert alert-danger">
+    <ul>
+      {% for err in errors %}
+      <li>{{err}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
   <form method="post" action="{{base_path}}gear/{{gear.id}}">
     <div class="form-group">
       <label>Bike</label>
