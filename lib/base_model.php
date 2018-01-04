@@ -26,8 +26,13 @@
       $validator->rule('integer', 'year');
       $validator->rule('url', 'link');
       $validator->rule('min', ['distance', 'year'], 0);
-      $validator->validate();
+      $valid = $validator->validate();
       $err = $validator->errors();
+      if ($valid) {
+        error_log("Validation was successfull");
+      } else {
+        error_log("Validation failed");
+      }
       $errors = array();
       foreach ($errors as $param => $earr) {
         foreach ($earr as $index => $issue) {
