@@ -25,7 +25,7 @@
       $validator->rule('numeric', 'distance');
       $validator->rule('integer', 'year');
       $validator->rule('url', 'link');
-      $validator->rile('min', ['distance', 'year'], 0);
+      $validator->rule('min', ['distance', 'year'], 0);
       $validator->validate();
       $err = $validator->errors();
       $errors = array();
