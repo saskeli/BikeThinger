@@ -58,7 +58,7 @@ class ComponentController extends BaseController {
   }
 
   public static function update($id) {
-    self::check_logged_int();
+    self::check_logged_in();
     $component = Component::find($id, $_SESSION['user']);
     if (is_null($component)) {
       Redirect::to('components', array('error' => 'No such component'));
@@ -69,7 +69,7 @@ class ComponentController extends BaseController {
   }
 
   public static function delete($id) {
-    self::check_logged_int();
+    self::check_logged_in();
     $component = Component::find($id, $_SESSION['user']);
     if (is_null($component)) {
       Redirect::to('components', array('error' => 'No such component'));

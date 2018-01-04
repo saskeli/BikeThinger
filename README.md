@@ -21,7 +21,7 @@ Working:
 * Bike
   * View all
   * View single
-  * See attached components in when viewing single
+  * See attached components when viewing single bike
   * Edit
   * Add
   * Delete
@@ -38,13 +38,16 @@ Working:
   * Add
   * Delete
 * Nav links work
+* Login / logout works as expected
+* Register will not be implemented
 
 TODO:
 
-* Make login do something
 * Make dropdowns do something
 * Make adding kilometers to bikes do something
 * Make tags a thing
 * make stuff less ugly
 * Some sort of filter/search functionality
 * Order items by usage
+* Make oauth
+* Learn to API
