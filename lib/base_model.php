@@ -39,6 +39,7 @@
           $errors[] = $issue;
         }
       }
+      error_log("error list size: " . sizeof($errors));
       return $errors;
     }
 
