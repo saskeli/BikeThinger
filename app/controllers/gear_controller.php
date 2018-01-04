@@ -11,7 +11,7 @@ class GearController extends BaseController {
     self::check_logged_int();
     $gear = Gear::find($id, $_SESSION['user']);
     if (is_null($gear)) {
-      Redirect::to('gear', 'No such gear');
+      Redirect::to('gear', array('error' => 'No such gear'));
     } else {
       View::make('gear/details.html', array('gear' => $gear));
     }
@@ -41,7 +41,7 @@ class GearController extends BaseController {
     self::check_logged_int();
     $gear = Gear::find($id, $_SESSION['user']);
     if (is_null($gear)) {
-      Redirect::to('gear', 'No such gear');
+      Redirect::to('gear', array('error' => 'No such gear'));
     } else {
       View::make('gear/edit.html', array(
         'gear' => $gear));
@@ -52,7 +52,7 @@ class GearController extends BaseController {
     self::check_logged_int();
     $gear = Gear::find($id, $_SESSION['user']);
     if (is_null($gear)) {
-      Redirect::to('gear', 'No such gear');
+      Redirect::to('gear', array('error' => 'No such gear'));
     } else {
       Gear::update($id, $_POST);
       Redirect::to('gear');
@@ -63,7 +63,7 @@ class GearController extends BaseController {
     self::check_logged_int();
     $gear = Gear::find($id, $_SESSION['user']);
     if (is_null($gear)) {
-      Redirect::to('gear', 'No such gear');
+      Redirect::to('gear', array('error' => 'No such gear'));
     } else {
       if ($gear->name === $_POST['name']) {
         Gear::delete($id);

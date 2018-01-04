@@ -11,7 +11,7 @@ class BikeController extends BaseController {
     self::check_logged_in();
     $bike = Bike::find($id, $_SESSION['user']);
     if (is_null($bike)) {
-      Redirect::to('bikes', 'No such bike');
+      Redirect::to('bikes', array('error' => 'No such bike'));
     } else {
       $components = Component::forbike($id, $_SESSION['user']);
       View::make('bike/details.html', array(
@@ -44,7 +44,7 @@ class BikeController extends BaseController {
     self::check_logged_in();
     $bike = Bike::find($id, $_SESSION['user']);
     if (is_null($bike)) {
-      Redirect::to('bikes', 'No such bike');
+      Redirect::to('bikes', array('error' => 'No such bike'));
     } else {
       Bike::update($id);
       Redirect::to('bikes');
@@ -55,7 +55,7 @@ class BikeController extends BaseController {
     self::check_logged_in();
     $bike = Bike::find($id, $_SESSION['user']);
     if (is_null($bike)) {
-      Redirect::to('bikes', 'No such bike');
+      Redirect::to('bikes', array('error' => 'No such bike'));
     } else {
       View::make('bike/edit.html', array('bike' => $bike));
     }
@@ -65,7 +65,7 @@ class BikeController extends BaseController {
     self::check_logged_in();
     $bike = Bike::find($id, $_SESSION['user']);
     if (is_null($bike)) {
-      Redirect::to('bikes', 'No such bike');
+      Redirect::to('bikes', array('error' => 'No such bike'));
     } else {
       if ($bike->name === $_POST['name']) {
         Bike::delete($id);

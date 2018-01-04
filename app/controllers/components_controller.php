@@ -14,7 +14,7 @@ class ComponentController extends BaseController {
     self::check_logged_in();
     $component = Component::find($id, $_SESSION['user']);
     if (is_null($component)) {
-      Redirect::to('components', 'No such component');
+      Redirect::to('components', array('error' => 'No such component'));
     } else {
       $bike = null;
       if ($component->in_use) {
@@ -50,7 +50,7 @@ class ComponentController extends BaseController {
     self::check_logged_in();
     $component = Component::find($id, $_SESSION['user']);
     if (is_null($component)) {
-      Redirect::to('components', 'No such component');
+      Redirect::to('components', array('error' => 'No such component'));
     } else {
       View::make('component/edit.html', array(
         'component' => $component));
@@ -61,7 +61,7 @@ class ComponentController extends BaseController {
     self::check_logged_int();
     $component = Component::find($id, $_SESSION['user']);
     if (is_null($component)) {
-      Redirect::to('components', 'No such component');
+      Redirect::to('components', array('error' => 'No such component'));
     } else {
       Component::update($id, $_POST);
       Redirect::to('components');
@@ -72,7 +72,7 @@ class ComponentController extends BaseController {
     self::check_logged_int();
     $component = Component::find($id, $_SESSION['user']);
     if (is_null($component)) {
-      Redirect::to('components', 'No such component');
+      Redirect::to('components', array('error' => 'No such component'));
     } else {
       if ($component->name === $_POST['name']) {
         Component::delete($id);
