@@ -19,13 +19,26 @@
         'year' => $this->year,
         'description' => $this->description));
       $validator->rule('required', ['name', 'distance']);
-      $validator->rule('required', ['model', 'link', 'year', 'description'], true);
       $validator->rule('lengthMax', 'name', 50);
-      $validator->rule('lengthMax', ['model', 'link', 'description'], 400);
       $validator->rule('numeric', 'distance');
-      $validator->rule('integer', 'year');
-      $validator->rule('url', 'link');
       $validator->rule('min', 'distance', 0);
+      if ($this->model) {
+        $validator->rule('required', 'model');
+        $validator->rule('lengthMax', 'model', 400);
+      }
+      if ($this->link) {
+        $validator->rule('required', 'link', true);
+        $validator->rule('lengthMax', 'link', 400);
+        $validator->rule('url', 'link');
+      }
+      if ($this->year) {
+        $validator->rule('required', 'year', true);
+        $validator->rule('integer', 'year');
+      }
+      if ($this->year) {
+        $validator->rule('required', 'description', true);
+        $validator->rule('lengthMax', 'description', 400);
+      }
       $valid = $validator->validate();
       $err = $validator->errors();
       $errors = array();
