@@ -40,11 +40,11 @@ Working:
 * Nav links work
 * Login / logout works as expected
 * Register will not be implemented
+* Dropdowns do something
+* Ddding kilometers to bikes does something
 
 TODO:
 
-* Make dropdowns do something
-* Make adding kilometers to bikes do something
 * Make tags a thing
 * make stuff less ugly
 * Some sort of filter/search functionality
