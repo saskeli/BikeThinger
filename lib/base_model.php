@@ -22,6 +22,7 @@
       $validator->rule('lengthMax', 'name', 50);
       $validator->rule('numeric', 'distance');
       $validator->rule('min', 'distance', 0);
+      $validator->rule('max', 'distance', 2147483647);
       if ($this->model) {
         $validator->rule('required', 'model');
         $validator->rule('lengthMax', 'model', 400);
@@ -34,8 +35,10 @@
       if ($this->year) {
         $validator->rule('required', 'year', true);
         $validator->rule('integer', 'year');
+        $validator->rule('min', 'year', -300000);
+        $validator->rule('max', 'year', 300000);
       }
-      if ($this->year) {
+      if ($this->description) {
         $validator->rule('required', 'description', true);
         $validator->rule('lengthMax', 'description', 400);
       }

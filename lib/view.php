@@ -27,13 +27,14 @@ class View{
 
   private static function set_flash_message(&$content){
     if(isset($_SESSION['flash_message'])){
-
-      $flash = json_decode($_SESSION['flash_message']);
-
-      foreach($flash as $key => $value){
-        $content[$key] = $value;
+      try {
+        $flash = json_decode($_SESSION['flash_message']);
+        foreach($flash as $key => $value){
+          $content[$key] = $value;
+        }  
+      } catch (Exception $e) {
+        $content['error'] = $e->getMessage();
       }
-
       unset($_SESSION['flash_message']);
     }
   }
