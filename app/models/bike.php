@@ -22,11 +22,11 @@ class Bike extends BaseModel {
   }
 
   public function toggleUsage() {
-    $in_use = true;
-    $retired = false;
+    $in_use = 1;
+    $retired = 0;
     if ($this->in_use) {
-      $in_use = false;
-      $retired = true;
+      $in_use = 0;
+      $retired = 1;
     }
     $query = DB::connection()->prepare(
       'UPDATE bike SET (in_use, retired) = (:in_use, :retired) WHERE id = :id');
