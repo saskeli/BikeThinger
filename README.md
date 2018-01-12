@@ -41,7 +41,7 @@ Working:
 * Login / logout works as expected
 * Register will not be implemented
 * Dropdowns do something
-* Ddding kilometers to bikes does something
+* Adding kilometers to bikes does something
 
 TODO:
 
