@@ -81,7 +81,7 @@ class BikeController extends BaseController {
     }
   }
 
-  private static function updateUsage($id) {
+  public static function updateUsage($id) {
     self::check_logged_in();
     $bike = Bike::find($id, $_SESSION['user']);
     if (is_null($bike)) {
