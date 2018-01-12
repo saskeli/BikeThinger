@@ -88,6 +88,10 @@ $routes->get('/component/new', function() {
   ComponentController::create();
 });
 
+$routes->post('/component/use/:id', function($id) {
+  ComponentController::updateUsage($id);
+});
+
 $routes->get('/component/edit/:id', function($id) {
   ComponentController::edit($id);
 });

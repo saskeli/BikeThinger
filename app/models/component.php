@@ -19,6 +19,18 @@ class Component extends BaseModel {
       'description' => $this->description));
   }
 
+  public function disable() {
+    $query = DB::connection()->prepare(
+      'UPDATE component SET (in_use, retired) = (FALSE, FALSE) WHERE id = :id');
+    $query->execute(array('id' => $this->id));
+  }
+
+  public function retire() {
+    $query = DB::connection()->prepare(
+      'UPDATE Component SET (in_use, retired) = (FALSE, TRUE) WHERE id = :id');
+    $query->execute(array('id' => $this->id));
+  }
+
   public static function forbike($id, $user_id) {
     $query = DB::connection()->prepare(
       'SELECT * FROM component WHERE bike_id = :id AND user_id = :user_id');

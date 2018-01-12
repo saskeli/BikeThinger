@@ -88,6 +88,29 @@ class ComponentController extends BaseController {
     }
   }
 
+  public static function updateUsage($id) {
+    self::check_logged_in();
+    $user_id = $_SESSION['user'];
+    $component = Component::find($id, $user_id);
+    $params = $_POST;
+    if (is_null($component)) {
+      Redirect::to('components', array('error' => 'No such component'));
+    } else if (isset($params['disable'])) {
+      $component->disable();
+      Redirect::to('components');
+    } else if (isset($params['retire'])) {
+      $component->retire();
+      Redirect::to('components');
+    } else {
+      $bike = Bike::find($params['bike'], $user_id);
+      if (is_null($bike)) {
+        Redirect::to('components', array('error' => 'No such bike'));
+      } else {
+        $component->assignToBike($bike);
+      }
+    }
+  }
+
   private static function componentFromPost($user_id, $values) {
     $distance = 0;
     if (isset($values['distance'])) {
