@@ -21,28 +21,33 @@
         {% if g.link %}
         <a href="{{g.link}}">{{g.model}}</a>
         {% else %}
-          {{g.model}}
+        {{g.model}}
         {% endif %}
       </td>
       <td>{{g.year}}</td>
       <td> 
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-            {% if g.retired %}
+        <form mode="post" action="{{base_path}}gear/use/{{g.id}}">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+              {% if g.retired %}
               Retired
-            {% elseif g.in_use %}
+              {% elseif g.in_use %}
               In use
-            {% else %}
+              {% else %}
               Not in use
-            {% endif %}
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">In use</a></li>
-            <li><a href="#">Not in use</a></li>
-            <li><a href="#">Retired</a></li>
-          </ul>
-        </div>
+              {% endif %}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><button type="{% if g.in_use %}button{% else %}submit{% endif %}"
+                name="use" class="btn btn-link">In use</button></li>
+              <li><button type="{% if g.in_use or g.retired %}submit{% else %}button{% endif %}"
+                name="disable" class="btn btn-link">Not in use</button></li>
+              <li><button type="{% if g.retired %}button{% else %}submit{% endif %}"
+                name="retire" class="btn btn-link">Retired</button></li>
+            </ul>
+          </div>
+        </form>
       </td>
     </tr>
     {% endfor %}

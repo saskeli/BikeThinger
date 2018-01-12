@@ -79,6 +79,25 @@ class GearController extends BaseController {
     }
   }
 
+  public static function updateUsage($id) {
+    self::check_logged_in();
+    $user_id = $_SESSION['user'];
+    $gear = Gear::find($id, $user_id);
+    $params = $_POST;
+    if (is_null($gear)) {
+      Redirect::to('gear', array('error' => 'No such gear'));
+    } else if (isset($params['disable'])) {
+      $gear->disable();
+      Redirect::to('gear');
+    } else if (isset($params['use'])) {
+      $component->use();
+      Redirect::to('gear');
+    } else {
+      $component->retire();
+      Redirect::to('gear');
+    }
+  }
+
   private static function gearFromPost($user_id, $values) {
     $distance = 0;
     if (isset($values['distance'])) {

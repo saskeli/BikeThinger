@@ -60,6 +60,10 @@ $routes->get('/gear/new', function() {
   GearController::create();
 });
 
+$routes->post('/gear/use/:id', function($id) {
+  GearController::updateUsage($id);
+});
+
 $routes->get('/gear/edit/:id', function($id) {
   GearController::edit($id);
 });

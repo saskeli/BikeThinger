@@ -19,6 +19,24 @@ class Gear extends BaseModel {
       'description' => $this->description));
   }
 
+  public function disable() {
+    $query = DB::connection()->prepare(
+      'UPDATE gear SET (in_use, retired) = (FALSE, FALSE) WHERE id = :id');
+    $query->execute(array('id' => $this->id));
+  }
+
+  public function retire() {
+    $query = DB::connection()->prepare(
+      'UPDATE gear SET (in_use, retired) = (FALSE, TRUE) WHERE id = :id');
+     $query->execute(array('id' => $this->id));
+  }
+
+  public function use() {
+    $query = DB::connection()->prepare(
+      'UPDATE gear SET (in_use, retired) = (TRUE, FALSE) WHERE id = :id');
+    $query->execute(array('id' => $this->id));
+  }
+
   public static function all($user_id) {
     $query = DB::connection()->prepare(
       'SELECT * FROM gear WHERE user_id = :user_id');
