@@ -32,7 +32,11 @@
               {% if component.retired %}
               Retired
               {% elseif component.in_use %}
-              {{bikes[component.bike_id]}}
+              {% for b in bikes %}
+              {% if b.id == component.bike_id %}
+              {{b.name}}
+              {% endif %}
+              {% endfor %}
               {% else %}
               Not in use
               {% endif %}
