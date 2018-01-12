@@ -49,9 +49,9 @@
                 name="bike" value="{{b.id}}" class="btn btn-link">{{b.name}}</button></li>
               {% endfor %}
               <li><button type="{% if component.in_use %}submit{% else %}button{% endif %}" 
-                name="disable" class="btn btn-link">Not in use</button></li>
+                name="disable" value="true" class="btn btn-link">Not in use</button></li>
               <li><button type="{% if component.retired %}button{% else %}submit{% endif %}" 
-                name="retire" class="btn btn-link">Retired</button></li>
+                name="retire" value="true" class="btn btn-link">Retired</button></li>
             </ul>
           </div>
         </form>

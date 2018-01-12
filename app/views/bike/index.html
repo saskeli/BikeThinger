@@ -38,8 +38,10 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><button type="{% if bike.in_use %}button{% else %}submit{% endif %}" name="in_use" class="btn btn-link">In use</button></li>
-              <li><button type="{% if bike.in_use %}submit{% else %}button{% endif %}" name="retire" class="btn btn-link">Retired</button></li>
+              <li><button type="{% if bike.in_use %}button{% else %}submit{% endif %}" 
+                name="in_use" value="true" class="btn btn-link">In use</button></li>
+              <li><button type="{% if bike.in_use %}submit{% else %}button{% endif %}" 
+                name="retire" value="true" class="btn btn-link">Retired</button></li>
             </ul>
           </div>
         </form>

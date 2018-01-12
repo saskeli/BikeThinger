@@ -40,11 +40,11 @@
             </button>
             <ul class="dropdown-menu">
               <li><button type="{% if g.in_use %}button{% else %}submit{% endif %}"
-                name="use" class="btn btn-link">In use</button></li>
+                name="use" value="true" class="btn btn-link">In use</button></li>
               <li><button type="{% if g.in_use or g.retired %}submit{% else %}button{% endif %}"
-                name="disable" class="btn btn-link">Not in use</button></li>
+                name="disable" value="true" class="btn btn-link">Not in use</button></li>
               <li><button type="{% if g.retired %}button{% else %}submit{% endif %}"
-                name="retire" class="btn btn-link">Retired</button></li>
+                name="retire" value="true" class="btn btn-link">Retired</button></li>
             </ul>
           </div>
         </form>
