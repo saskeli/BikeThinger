@@ -37,14 +37,32 @@ class Gear extends BaseModel {
     $query->execute(array('id' => $this->id));
   }
 
+  public function addKilometers($num) {
+    $query = DB::connection()->prepare(
+      'UPDATE gear SET distance = distance + :num WHERE id = :id');
+    $query->execute(array('num'=> $num, 'id' => $this->id));
+  }
+
   public static function all($user_id) {
     $query = DB::connection()->prepare(
       'SELECT * FROM gear WHERE user_id = :user_id');
     $query->execute(array('user_id' => $user_id));
     $rows = $query->fetchAll();
-      $gear = array();
-      foreach($rows as $row){
-          $gear[] = new Gear(Gear::rowToArr($row));
+    $gear = array();
+    foreach($rows as $row){
+      $gear[] = new Gear(Gear::rowToArr($row));
+    }
+    return $gear;
+  }
+
+  public static function allInUse($user_id) {
+    $query = DB::connection()-prepare(
+      'SELECT * FROM gear WHERE user_id = :user_id and in_use = TRUE');
+    $query->execute(array('user_id' => $user_id));
+    $rows = $query->fetchAll();
+    $gear = array();
+    foreach ($rows as $row) {
+      $gear[] = new Gear(Gear::rowToArr($row));
     }
     return $gear;
   }

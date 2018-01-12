@@ -37,6 +37,12 @@ class Component extends BaseModel {
     $query->execute(array('id' => $this->id, 'bike_id' => $bike->id));
   }
 
+  public function addKilometers($num) {
+    $query = DB::connection()->prepare(
+      'UPDATE component SET distance = distance + :num WHERE id = :id');
+    $query->execute(array('id' => $this->id, 'num' => $num));
+  }
+
   public static function forbike($id, $user_id) {
     $query = DB::connection()->prepare(
       'SELECT * FROM component WHERE bike_id = :id AND user_id = :user_id AND in_use = TRUE');

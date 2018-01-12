@@ -33,6 +33,12 @@ class Bike extends BaseModel {
     $query->execute(array('in_use' => $in_use, 'retired' => $retired, 'id' => $this->id));
   }
 
+  public function addKilometers($num) {
+    $query = DB::connection()->prepare(
+      'UPDATE bike SET distance = distance + :num WHERE id = :id');
+    $query->execute(array('num' => $num, 'id' => $this->id));
+  }
+
   public static function all($user_id) {
     $query = DB::connection()->prepare(
       'SELECT * FROM bike WHERE user_id = :user_id');
