@@ -95,7 +95,7 @@ class BikeController extends BaseController {
   public static function addKilometers($id) {
     self::check_logged_in();
     if (!isset($_POST['number'])) {
-      Redirect::to('bike', 'invalid post');
+      Redirect::to('bikes', array('error' => 'invalid post'));
     }
     $number = $_POST['number'];
     $user_id = $_SESSION['user'];
