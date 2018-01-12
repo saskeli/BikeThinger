@@ -90,10 +90,10 @@ class GearController extends BaseController {
       $gear->disable();
       Redirect::to('gear');
     } else if (isset($params['use'])) {
-      $component->use();
+      $gear->use();
       Redirect::to('gear');
     } else {
-      $component->retire();
+      $gear->retire();
       Redirect::to('gear');
     }
   }
