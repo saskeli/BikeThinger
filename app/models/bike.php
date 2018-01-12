@@ -30,7 +30,7 @@ class Bike extends BaseModel {
     }
     $query = DB::connection()->prepare(
       'UPDATE bike SET (in_use, retired) = (:in_use, :retired) WHERE id = :id');
-    $query->exec(array('in_use' => $in_use, 'retired' => $retired, 'id' => $this->id));
+    $query->execute(array('in_use' => $in_use, 'retired' => $retired, 'id' => $this->id));
   }
 
   public static function all($user_id) {
