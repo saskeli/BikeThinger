@@ -39,7 +39,7 @@ class Component extends BaseModel {
 
   public static function forbike($id, $user_id) {
     $query = DB::connection()->prepare(
-      'SELECT * FROM component WHERE bike_id = :id AND user_id = :user_id');
+      'SELECT * FROM component WHERE bike_id = :id AND user_id = :user_id AND in_use = TRUE');
     $query->execute(array('id' => $id, 'user_id' => $user_id));
     $rows = $query->fetchAll();
     $components = array();

@@ -5,7 +5,7 @@
     <li><strong>Kilometers:</strong> {{component.distance}}</li>
     <li><strong>Manufacturer / Model:</strong> {{component.model}}</li>
     <li><strong>Bike:</strong> 
-      {% if bike %}
+      {% if component.in_use %}
       <a href="{{base_path}}bike/{{bike.id}}">{{bike.name}}</a>
       {% else %}
       N/A
