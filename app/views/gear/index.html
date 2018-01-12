@@ -26,7 +26,7 @@
       </td>
       <td>{{g.year}}</td>
       <td> 
-        <form mode="post" action="{{base_path}}gear/use/{{g.id}}">
+        <form method="post" action="{{base_path}}gear/use/{{g.id}}">
           <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
               {% if g.retired %}

@@ -119,7 +119,3 @@ $routes->get('/component/:id', function($id) {
 $routes->get('/sandbox', function() {
   HelloWorldController::sandbox();
 });
-
-$routes->get('/fuu', function() {
-  return 'lol';
-});
