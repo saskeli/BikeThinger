@@ -94,25 +94,25 @@ class BikeController extends BaseController {
 
   public static function addKilometers($id) {
     self::check_logged_in();
-    if (!isset($_POST['number'])) {
+    if (!isset($_POST['num'])) {
       Redirect::to('bikes', array('error' => 'invalid post'));
     }
-    $number = $_POST['number'];
+    $num = $_POST['num'];
     $user_id = $_SESSION['user'];
     $bike = Bike::find($id, $user_id);
     if (is_null($bike)) {
       Redirect::to('bikes', array('error' => 'No such bike'));
-    } else if ((!is_numeric($number)) or $number < 0 or $number > 3000){
+    } else if ((!is_numeric($num)) or $num < 0 or $num > 3000){
       Redirect::to('bikes', array('error' => 'Needs to be number between 0 and 3000'));
     } else {
       $components = Component::forbike($id, $user_id);
       $gear = Gear::allInUse($user_id);
-      $bike->addKilometers($number);
+      $bike->addKilometers($num);
       foreach ($components as $component) {
-        $component->addKilometers($number);
+        $component->addKilometers($num);
       }
       foreach ($gear as $g) {
-        $g->addKilometers($number);
+        $g->addKilometers($num);
       }
       Redirect::to('bikes');
     }
