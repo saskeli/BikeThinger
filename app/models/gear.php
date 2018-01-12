@@ -56,7 +56,7 @@ class Gear extends BaseModel {
   }
 
   public static function allInUse($user_id) {
-    $query = DB::connection()-prepare(
+    $query = DB::connection()->prepare(
       'SELECT * FROM gear WHERE user_id = :user_id and in_use = TRUE');
     $query->execute(array('user_id' => $user_id));
     $rows = $query->fetchAll();
