@@ -27,7 +27,7 @@
       </td>
       <td>{{bike.year}}</td>
       <td>
-        <form method="post" action="{{base_path}}/bike/use/{{bike.id}}">
+        <form method="post" action="{{base_path}}bike/use/{{bike.id}}">
           <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
               {% if bike.in_use %}

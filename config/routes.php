@@ -28,7 +28,7 @@ $routes->get('/bike/new', function() {
   BikeController::create();
 });
 
-$routes->post('/bike/use/:id', function() {
+$routes->post('/bike/use/:id', function($id) {
   BikeController::updateUsage($id);
 });
 
