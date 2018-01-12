@@ -21,6 +21,18 @@ class Bike extends BaseModel {
       'description' => $this->description));
   }
 
+  public function toggleUsage() {
+    $in_use = true;
+    $retired = false;
+    if ($this->in_use) {
+      $in_use = false;
+      $retired = true;
+    }
+    $query = DB::connection()->prepare(
+      'UPDATE bike SET (in_use, retired) = (:in_use, :retired) WHERE id = :id');
+    $query->exec(array('in_use' => $in_use, 'retired' => $retired, 'id' => $this->id));
+  }
+
   public static function all($user_id) {
     $query = DB::connection()->prepare(
       'SELECT * FROM bike WHERE user_id = :user_id');

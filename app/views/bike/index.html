@@ -27,20 +27,22 @@
       </td>
       <td>{{bike.year}}</td>
       <td>
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-            {% if bike.in_use %}
-            In use
-            {% else %}
-            Retired
-            {% endif %}
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">In use</a></li>
-            <li><a href="#">Retired</a></li>
-          </ul>
-        </div>
+        <form method="post" action="{{base_path}}/bike/{{bike.id}}/use">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+              {% if bike.in_use %}
+              In use
+              {% else %}
+              Retired
+              {% endif %}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><button type="{% if bike.in_use %}button{% else %}submit{% endig %}" name="in_use" class="btn btn-link">In use</button></li>
+              <li><button type="{% if bike.in_use %}submit{% else %}button{% endig %}" name="retire" class="btn btn-link">Retired</button></li>
+            </ul>
+          </div>
+        </form>
       </td>
       <td>
         <form class="form-inline">

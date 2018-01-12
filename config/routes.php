@@ -28,6 +28,10 @@ $routes->get('/bike/new', function() {
   BikeController::create();
 });
 
+$routes->post('/bike/use/:id', function() {
+  BikeController::updateUsage($id);
+});
+
 $routes->get('/bike/edit/:id', function($id) {
   BikeController::edit($id);
 });

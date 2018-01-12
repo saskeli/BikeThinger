@@ -14,6 +14,12 @@ Time permitting, add integration to the [Strava rest API](https://strava.github.
 
 Time permitting, add tagging functionality for gear and components to help keep track of component type, usability status and possibly compatibility.
 
+## Use
+
+The app can currently be accessed at [https://bikethinger.herokuapp.com/](https://bikethinger.herokuapp.com/).
+
+For testing you can use **admin** as user name and **root** as password. Note that there is no register feature nor will there ever be. Potentially there will be funtionality to log in to BikeThinger with your Strava credentials.
+
 ## Environment
 
 The app will be written in [php](http://php.net/manual/en/intro-whatis.php) and deployed on [Heroku](https://www.heroku.com/). Data will be stored in a [postgresql](https://www.postgresql.org/) database provided by Heroku.
@@ -89,7 +95,7 @@ The user is the "Owner" of all other items. Stores very little actual data as mo
 | user name | string (max 50 characters) | The user name that the user uses to log into the system |
 | password  | string (max 50 characters) | The password that the user uses to log into the system |
 
-### Bike 
+### Bike
 
 Stores information related to a spesific bike. Typically bound to a given frame. The bike is the attachment point of all components. A user can have any number of bikes and a bike can have any number of attached components
 

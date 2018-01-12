@@ -81,6 +81,17 @@ class BikeController extends BaseController {
     }
   }
 
+  private static function updateUsage($id) {
+    self::check_logged_in();
+    $bike = Bike::find($id, $_SESSION['user']);
+    if (is_null($bike)) {
+      Redirect::to('bikes', array('error' => 'No such bike'));
+    } else {
+      $bike->toggleUsage();
+      Redirect::to('bikes');
+    }
+  }
+
   private static function bikeFromPost($user_id, $values) {
     $distance = 0;
     if (isset($values['distance'])) {
