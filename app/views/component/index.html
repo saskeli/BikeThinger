@@ -40,8 +40,8 @@
             </button>
             <ul class="dropdown-menu">
               {% for b in bikes %}
-              <li><button type="{% if loop.index == component.bike_id %}buton{% else %}submit{% endif %}" 
-                name="bike" value="{{loop.index}}" class="btn btn-link">{{b}}</button></li>
+              <li><button type="{% if b.id == component.bike_id %}button{% else %}submit{% endif %}" 
+                name="bike" value="{{b.id}}" class="btn btn-link">{{b}}</button></li>
               {% endfor %}
               <li><button type="{% if component.in_use %}submit{% else %}button{% endif %}" 
                 name="disable" class="btn btn-link">Not in use</button></li>

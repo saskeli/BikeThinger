@@ -4,7 +4,7 @@ class ComponentController extends BaseController {
   public static function index() {
     self::check_logged_in();
     $components = Component::all($_SESSION['user']);
-    $bikes = Bike::allWithId($_SESSION['user']);
+    $bikes = Bike::all($_SESSION['user']);
     View::make('component/index.html', array(
       'components' => $components,
       'bikes' => $bikes));
@@ -107,6 +107,7 @@ class ComponentController extends BaseController {
         Redirect::to('components', array('error' => 'No such bike'));
       } else {
         $component->assignToBike($bike);
+        Redirect::to('components');
       }
     }
   }

@@ -57,18 +57,6 @@ class Bike extends BaseModel {
     return null;
   }
 
-  public static function allWithId($user_id) {
-    $query = DB::connection()->prepare(
-      'SELECT id, name FROM bike WHERE user_id = :user_id');
-    $query->execute(array('user_id' => $user_id));
-    $rows = $query->fetchAll();
-    $bikes = array();
-    foreach ($rows as $row) {
-      $bikes[$row['id']] = $row['name'];
-    }
-    return $bikes;
-  }
-
   public static function update($id, $fields) {
     $query = DB::connection()->prepare(
       'UPDATE bike SET (distance, name, model, link, year, description) = ' .
