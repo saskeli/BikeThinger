@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{tag.name}}</h1>
+  <ul>
+    <li><strong>Required:</strong> {{tag.requred}}</li>
+    <li><strong>Exclusive:</strong> {{tag.exclusive}}</li>
+  </ul>
+  <h2>Bikes:</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Kilometers</th>
+        <th>Manufacturer / Model</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in bikes %}
+      <tr>
+        <td><a href="{{base_path}}bike/{{b.id}}">{{b.name}}</a></td>
+        <td>{{b.distance}}</td>
+        <td>
+          {% if b.link %}
+          <a href="{{b.link}}">{{b.model}}</a>
+          {% else %}
+          {{b.model}}
+          {% endif %}
+        </td>
+        <td>b.year</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2>Components:</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Kilometers</th>
+        <th>Manufacturer / Model</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in components %}
+      <tr>
+        <td><a href="{{base_path}}component/{{c.id}}">{{c.name}}</a></td>
+        <td>{{c.distance}}</td>
+        <td>
+          {% if c.link %}
+          <a href="{{c.link}}">{{c.model}}</a>
+          {% else %}
+          {{c.model}}
+          {% endif %}
+        </td>
+        <td>c.year</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2>Gear:</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Kilometers</th>
+        <th>Manufacturer / Model</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for g in gear %}
+      <tr>
+        <td><a href="{{base_path}}gear/{{g.id}}">{{g.name}}</a></td>
+        <td>{{g.distance}}</td>
+        <td>
+          {% if g.link %}
+          <a href="{{g.link}}">{{g.model}}</a>
+          {% else %}
+          {{g.model}}
+          {% endif %}
+        </td>
+        <td>g.year</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p>
+    <a href="{{base_path}}tag/edit/{{tag.id}}" class="btn btn-default">Edit</a>
+  </p>
+{% endblock %}

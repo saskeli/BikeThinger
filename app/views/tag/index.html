@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Your tags</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Required</th>
+      <th>exclusive</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for tag in tags %}
+    <tr>
+      <td><a href="{{base_path}}tag/{{tag.id}}">{{tag.name}}</a></td>
+      <td>
+        {% if tag.required %}
+        true
+        {% else %}
+        false
+        {% endif %}
+      </td>
+      <td> 
+        {% if tag.exclusive %}
+        true
+        {% else %}
+        false
+        {% endig %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<p>
+  <a href="{{base_path}}tag/new" class="btn btn-success">Add tag</a>
+</p>
+
+{% endblock %}

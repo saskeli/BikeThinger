@@ -116,6 +116,42 @@ $routes->get('/component/:id', function($id) {
   ComponentController::show($id);
 });
 
+$routes->get('/tags', function() {
+  TagController::index();
+});
+
+$routes->post('/tags', function() {
+  TagController::store();
+});
+
+$routes->get('/tag/new', function() {
+  TagController::create();
+});
+
+$routes->post('/tag/attach', function() {
+  TagController::attach();
+});
+
+$routes->post('/tag/detach', function() {
+  TagController::detach();
+});
+
+$routes->get('/tag/edit/:id', function($id) {
+  TagController::edit($id);
+});
+
+$routes->post('/tag/delete/:id', function($id) {
+  TagController::delete();
+});
+
+$routes->post('/tag/:id', function() {
+  TagController::update();
+});
+
+$routes->get('/tag/:id', function() {
+  TagController::show($id);
+});
+
 $routes->get('/sandbox', function() {
   HelloWorldController::sandbox();
 });

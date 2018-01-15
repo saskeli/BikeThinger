@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Editing {{tag.name}}</h1>
+  {% if errors %}
+  <div class="alert alert-danger">
+    <ul>
+      {% for err in errors %}
+      <li>{{err}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  <form method="post" action="{{base_path}}tag/{{gear.id}}">
+    <div class="form-group">
+      <label>Tag</label>
+      <input name="name" value="{{tag.name}}" class="form-control" type="text" />
+    </div>
+    <div class="checkbox">
+      <label>
+        Required
+        <input type="checkbox" name="required" checked="{% if tag.required %}true{% else %}false{% endif %}" />
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        Exclusive
+        <input type="checkbox" name="exclusive" checked="{% if tag.exclusive %}true{% else %}false{% endif %}" />
+      </label>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+  <form method="post" action="{{base_path}}tag/delete/{{tag.id}}" class="form-inline">
+    <input type="text" name="name" value="Component name here" class="form-control" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+{% endblock %}
